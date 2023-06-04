@@ -17,26 +17,16 @@ export const SearchPopup = () => {
 
   return (
     <div
-      className={`${
-        searchActive ? "w-full top-1/2 -translate-y-1/2" : "w-0 top-0"
-      } fixed left-1/2 -translate-x-1/2 z-[9999] ${
-        searchActive ? "overflow-auto px-4 py-6" : "overflow-hidden p-0"
-      } transition-all duration-200`}
-      style={{
-        height: searchActive ? screenHeight : 0 + "px",
-        background: "rgba(255, 255, 255, 0.3)",
-        backdropFilter: "blur(8px)",
-      }}
+      className={`search-container ${searchActive ? "active" : ""}`}
+      style={{height: searchActive ? screenHeight : 0 + "px"}}
     >
       <div className="flex items-center justify-end">
         <button
-          onClick={
-            () => {
-              setInputValue("")
-              setSearchText("")
-              setSearchActive(false)
-            }
-          }
+          onClick={() => {
+            setInputValue("");
+            setSearchText("");
+            setSearchActive(false);
+          }}
           className="p-1 rounded-full active:bg-gray-200"
         >
           <IconContext.Provider value={{ className: "text-2xl lg:text-3xl" }}>
