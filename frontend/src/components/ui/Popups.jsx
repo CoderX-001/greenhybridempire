@@ -38,7 +38,7 @@ export const SearchPopup = () => {
       <div className="mt-6">
         <form className="relative" onSubmit={(e) => e.preventDefault()}>
           <PrimaryInput
-            type="search"
+            type="text"
             name="search"
             placeholder="What are you looking for?"
             padding="py-3 pl-4 pr-16"
