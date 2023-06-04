@@ -73,8 +73,8 @@ a.large:not([aria-current=page]):hover{color:#5c5c5c;}
   -o-transform:translate(-50%, -50%);
   transform:translate(-50%, -50%);
   background:rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter:blur(8px);
-  backdrop-filter:blur(8px);
+  -webkit-filter:blur(8px);
+  filter:blur(8px);
   -webkit-transition:all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   transition:all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
