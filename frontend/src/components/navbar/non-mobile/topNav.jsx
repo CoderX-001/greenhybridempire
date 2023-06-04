@@ -1,11 +1,24 @@
+import { useContext } from "react";
 import { IconContext } from "react-icons";
 import { AiOutlineBell, AiOutlineShopping } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AppContext } from "../../../contexts/AppContext";
 
 const TopNav = () => {
+ const {isDark} = useContext(AppContext)
+
   return (
-    <nav className="w-full bg-white py-6 flex items-center gap-x-6 justify-end px-6">
-      <Link to="/notifications" className="relative">
+    <nav
+      className={`w-full ${
+        isDark ? "bg-[#121212]" : "bg-white"
+      } py-6 flex items-center gap-x-6 justify-end px-6 transition-all duration-300`}
+    >
+      <Link
+        to="/notifications"
+        className={`${
+          isDark ? "text-secondary" : "text-black"
+        } relative transition-all duration-300`}
+      >
         <IconContext.Provider value={{ className: "text-2xl" }}>
           <AiOutlineBell />
         </IconContext.Provider>
@@ -15,7 +28,9 @@ const TopNav = () => {
 
       <Link
         to="/cart"
-        className="relative"
+        className={`${
+          isDark ? "text-secondary" : "text-black"
+        } relative transition-all duration-300`}
       >
         <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
           <AiOutlineShopping />

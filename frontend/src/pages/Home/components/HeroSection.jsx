@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import HeroImage from "../../../assets/image3.jpeg";
 import { LinkButtonPrimary, LinkButtonSecondary } from "../../../components/ui/buttons";
-import { ThemeContext } from "../../../contexts";
+import { AppContext } from "../../../contexts/AppContext";
 
 const HeroSection = ({ screenHeight }) => {
-  const {isDark} = useContext(ThemeContext)
+  const {isDark} = useContext(AppContext)
 
   return (
     <div

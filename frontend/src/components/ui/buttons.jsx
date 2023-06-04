@@ -20,7 +20,7 @@ export const LinkButtonSecondary = ({ link, text }) => {
   );
 };
 
-export const ButtonWithIcon = ({link, text, icon, iconSize, func, backgroundColor, textColor, padding, borderRadius}) => {
+export const ButtonWithIcon = ({link, text, icon, iconSize, func, backgroundColor, textColor, padding, borderRadius, miscStyle}) => {
   return (
     <>
       {link ? (
@@ -40,12 +40,12 @@ export const ButtonWithIcon = ({link, text, icon, iconSize, func, backgroundColo
           onClick={func}
           className={`${
             typeof text !== "undefined" ? "flex items-center gap-x-3" : ""
-          } ${backgroundColor} ${textColor} ${padding} ${borderRadius}`}
+          } ${backgroundColor} ${textColor} ${padding} ${borderRadius} ${typeof miscStyle !== "undefined" ? miscStyle : ""}`}
         >
           {typeof text !== "undefined" ? <p className="text-lg">{text}</p> : null}
-          <IconContext.Provider value={{ className: iconSize }}>
+          {typeof icon !== "undefined" ? <IconContext.Provider value={{ className: iconSize }}>
             {icon}
-          </IconContext.Provider>
+          </IconContext.Provider> : ""}
         </button>
       )}
     </>

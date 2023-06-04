@@ -14,11 +14,11 @@ import {
   ShowBlogs,
 } from "./components";
 import { useContext } from "react";
-import { ThemeContext } from "../../contexts";
+import { AppContext } from "../../contexts/AppContext";
 import { Footer } from "../../components/ui";
 
 const Home = () => {
-  const { isDark } = useContext(ThemeContext);
+  const { isDark } = useContext(AppContext);
 
   const [screenWidth, setScreenWidth] = useState(getAvailableScreenWidth());
   const [screenHeight, setScreenHeight] = useState(getAvailableScreenHeight());

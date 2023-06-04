@@ -5,7 +5,7 @@ export const getAvailableScreenHeight = () => {
 }
 
 export const getAvailableScreenWidth = () => {
-  const screenWidth = screen.availWidth;
+  const screenWidth = window.innerWidth;
 
   return screenWidth
 }

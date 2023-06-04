@@ -1,13 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import { getAvailableScreenHeight } from "../../../functions/functions";
 import { IconContext } from "react-icons";
 import { FaShoppingBasket, FaTimes } from "react-icons/fa"
-import { ThemeContext } from "../../../contexts";
-import { HiMoon, HiSun } from "react-icons/hi";
 
 const Sidebar = ({ active, closeNav }) => {
-  const {isDark, setIsDark} = useContext(ThemeContext)
   const [screenHeight, setScreenHeight] = useState(getAvailableScreenHeight())
   window.addEventListener("resize", () => setScreenHeight(getAvailableScreenHeight()))
 
@@ -40,15 +37,6 @@ const Sidebar = ({ active, closeNav }) => {
           <Link to="">Farm inputs</Link>
           <Link to="">GreenHybrid Products</Link>
         </div>
-      </div>
-
-      <div className="absolute bottom-16 left-0 px-3">
-        <button onClick={() => setIsDark(!isDark)} className="relative text-white flex items-center gap-x-2">
-          <IconContext.Provider value={{ className: "text-2xl" }}>
-            {isDark ? <HiSun /> : <HiMoon />}
-          </IconContext.Provider>
-          <span>{isDark ? "Light mode" : "Dark mode"}</span>
-        </button>
       </div>
     </aside>
   );

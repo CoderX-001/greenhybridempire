@@ -1,16 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home"
-import { ThemeContextProvider } from "./contexts"
+import AppContextProvider from "./contexts/AppContext"
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ThemeContextProvider>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-        </Routes>
-      </ThemeContextProvider>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <AppContextProvider>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+          </Routes>
+        </AppContextProvider>
+      </BrowserRouter>
+    </div>
   )
 }
 

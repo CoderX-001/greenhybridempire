@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { getAvailableScreenHeight } from "../../../functions/functions";
 import { IconContext } from "react-icons";
-import { AiFillHome, AiFillShop, AiOutlineUser } from "react-icons/ai";
-import { BiMoon, BiNews, BiSearch, BiSun } from "react-icons/bi";
+import { AiFillShop, AiOutlineUser } from "react-icons/ai";
+import { BiHome, BiMoon, BiNews, BiSearch, BiSun } from "react-icons/bi";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { AppContext } from "../../../contexts/AppContext";
 
-const Sidebar = ({navFunc}) => {
+const Sidebar = ({ navFunc }) => {
+  const { isDark, setIsDark } = useContext(AppContext)
+  
   const [screenHeight, setScreenHeight] = useState(getAvailableScreenHeight());
   const [sideBar, setSideBar] = useState(false)
   window.addEventListener("resize", () =>
@@ -20,11 +23,11 @@ const Sidebar = ({navFunc}) => {
 
   return (
     <aside
-      className={`${
-        sideBar ? "w-[30%]" : "w-20"
-      } fixed z-50 top-0 left-0 bg-white py-6 ${
+      className={`${sideBar ? "w-[30%]" : "w-20"} fixed z-50 top-0 left-0 ${
+        isDark ? "bg-[#121212 ]" : "bg-white"
+      } py-6 ${
         sideBar ? "px-6" : "flex flex-col items-center"
-      } transition-[width] duration-300`}
+      } transition-[width,color] duration-300 drop-shadow-lg`}
       style={{ height: screenHeight + "px" }}
     >
       <Link to="/">
@@ -77,7 +80,7 @@ const Sidebar = ({navFunc}) => {
         <NavLink to="/" className="large w-fit flex items-center gap-x-4">
           <div title="Home">
             <IconContext.Provider value={{ className: "text-2xl" }}>
-              <AiFillHome />
+              <BiHome />
             </IconContext.Provider>
           </div>
           {sideBar ? <span>Home</span> : null}
@@ -123,15 +126,29 @@ const Sidebar = ({navFunc}) => {
         </NavLink>
       </div>
 
-      <div className="flex flex-col items-center gap-y-6 absolute bottom-6">
-        <button>
+      <div className="flex flex-col items-start gap-y-6 absolute bottom-6">
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className={`flex items-center gap-x-3 ${
+            isDark ? "text-secondary" : "text-black"
+          } transition-all duration-300`}
+        >
           <IconContext.Provider value={{ className: "text-2xl" }}>
-            <BiMoon />
-            {/* <BiSun /> */}
+            {isDark ? <BiSun /> : <BiMoon />}
           </IconContext.Provider>
+          {sideBar ? (
+            <span className="text-[0.9rem] text-secondary-gray hover:text-[#5c5c5c]">
+              Toggle theme
+            </span>
+          ) : null}
         </button>
 
-        <button onClick={updateNav}>
+        <button
+          onClick={updateNav}
+          className={`${
+            isDark ? "text-secondary" : "text-black"
+          } transition-all duration-300`}
+        >
           <IconContext.Provider value={{ className: "text-2xl" }}>
             <HiMenuAlt1 />
           </IconContext.Provider>

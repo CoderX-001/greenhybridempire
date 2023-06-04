@@ -3,19 +3,20 @@ import { IconContext } from "react-icons";
 import { AiFillShop, AiOutlineUser } from "react-icons/ai";
 import { BiHome, BiNews, BiSearch } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
-import { ThemeContext } from "../../../contexts";
+import { AppContext } from "../../../contexts/AppContext";
 
 const BottomNav = () => {
-  const {isDark} = useContext(ThemeContext)
+  const { isDark, searchState } = useContext(AppContext)
+  const {setSearchActive} = searchState
 
   return (
-    <div className={`fixed z-50 bottom-0 left-0 w-full h-12 ${isDark ? "bg-[#121212]" : "bg-white"} px-8 flex items-center justify-between`}>
+    <div className={`fixed z-50 bottom-0 left-0 w-full h-12 ${isDark ? "bg-[#121212]" : "bg-white"} px-8 flex items-center justify-between transition-all duration-300`}>
       <NavLink to="/" className="text-primary" title="Home">
         <IconContext.Provider value={{className: "text-[1.6rem]"}}>
           <BiHome />
         </IconContext.Provider>
       </NavLink>
-      <button className="text-primary" title="Search">
+      <button onClick={() => setSearchActive(true)} className="text-primary" title="Search">
         <IconContext.Provider value={{className: "text-[1.6rem]"}}>
           <BiSearch />
         </IconContext.Provider>

@@ -1,6 +1,0 @@
-export { CartContext } from "./CartContext"
-export { default as CartContextProvider } from "./CartContext"
-export { ThemeContext } from "./ThemeContext"
-export { default as ThemeContextProvider } from "./ThemeContext"
-export { SearchContext } from "./SearchContext"
-export { default as SearchContextProvider } from "./SearchContext"

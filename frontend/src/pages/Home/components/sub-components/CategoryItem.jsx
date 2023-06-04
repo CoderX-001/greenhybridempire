@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../../../../contexts";
+import { AppContext } from "../../../../contexts/AppContext";
 
 const CategoryItem = ({ title, description, image, link }) => {
-  const { isDark } = useContext(ThemeContext)
+  const { isDark } = useContext(AppContext)
   
   return (
     <Link

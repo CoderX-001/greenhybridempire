@@ -1,20 +1,24 @@
 import { IconContext } from "react-icons";
 import { AiOutlineBell, AiOutlineShopping } from "react-icons/ai";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { HiMoon, HiSun } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import BottomNav from "./bottomNav";
 import Sidebar from "./sidebar";
 import { useContext, useState } from "react";
-import { ThemeContext } from "../../../contexts";
+import { AppContext } from "../../../contexts/AppContext";
+import { SearchPopup } from "../../ui/Popups";
 
 const Mobile = () => {
   const [sideBarActive, setSideBarActive] = useState(false);
-  const { isDark } = useContext(ThemeContext);
+  const { isDark, setIsDark } = useContext(AppContext);
 
   return (
     <>
       <nav
-        className={`w-full h-16 ${isDark ? "bg-[#121212]" : "bg-[#fff]"} sticky z-40 top-0 flex items-center justify-between px-4 drop-shadow`}
+        className={`w-full h-16 ${
+          isDark ? "bg-[#121212]" : "bg-[#fff]"
+        } sticky z-40 top-0 flex items-center justify-between px-4 drop-shadow transition-all duration-300`}
       >
         {/* Menu button and logo */}
         <div className="flex items-center gap-x-8">
@@ -70,40 +74,49 @@ const Mobile = () => {
                 d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"
               ></path>
             </svg> */}
-            <span className="text-lg text-primary font-medium">GreenHybrid Empire</span>
+            <span className="text-lg text-primary font-medium">
+              GreenHybrid Empire
+            </span>
           </Link>
         </div>
 
         <div className="flex items-center gap-x-4">
-          <Link
-            to="/notifications"
-            className={`relative ${
-              isDark ? "text-primary" : "text-black"
-            }`}
+          <div className="flex items-center gap-x-4">
+            <Link
+              to="/notifications"
+              className={`relative ${isDark ? "text-primary" : "text-black"}`}
+            >
+              <IconContext.Provider value={{ className: "text-2xl" }}>
+                <AiOutlineBell />
+              </IconContext.Provider>
+
+              {sideBarActive ? (
+                <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div>
+              ) : null}
+            </Link>
+
+            <Link
+              to="/cart"
+              className={`relative ${isDark ? "text-primary" : "text-black"}`}
+            >
+              <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
+                <AiOutlineShopping />
+              </IconContext.Provider>
+
+              {sideBarActive ? (
+                <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
+              ) : null}
+            </Link>
+          </div>
+
+          <button
+            onClick={() => setIsDark(!isDark)}
+            className={`relative ${isDark ? "text-secondary" :"text-secondary-gray -scale-x-100 hover:text-[#121212]"} flex items-center gap-x-2`}
           >
             <IconContext.Provider value={{ className: "text-2xl" }}>
-              <AiOutlineBell />
+              {isDark ? <HiSun /> : <HiMoon />}
             </IconContext.Provider>
-
-            {sideBarActive ? (
-              <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div>
-            ) : null}
-          </Link>
-
-          <Link
-            to="/cart"
-            className={`relative ${
-              isDark ? "text-primary" : "text-black"
-            }`}
-          >
-            <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
-              <AiOutlineShopping />
-            </IconContext.Provider>
-
-            {sideBarActive ? (
-              <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
-            ) : null}
-          </Link>
+          </button>
         </div>
 
         <Sidebar
@@ -111,6 +124,8 @@ const Mobile = () => {
           closeNav={() => setSideBarActive(false)}
         />
       </nav>
+
+      <SearchPopup />
 
       <BottomNav />
     </>

@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { PrimaryInput, TextArea } from "../../../components/form/Inputs";
 import { ButtonWithIcon } from "../../../components/ui/buttons";
 import { FaFacebook, FaInstagram, FaPaperPlane, FaTwitter } from "react-icons/fa";
-import { ThemeContext } from "../../../contexts";
+import { AppContext } from "../../../contexts/AppContext";
 import ContactImage from "../../../assets/image4.jpeg"
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 
 const ContactSection = () => {
-  const { isDark } = useContext(ThemeContext);
+  const { isDark } = useContext(AppContext);
 
   return (
     <div
@@ -25,7 +25,7 @@ const ContactSection = () => {
         For more inquiry or complaint, you can contact us via email.
       </p>
       <div className="px-8">
-        <form method="POST">
+        <form method="POST" className="md:w-1/2 md:mx-auto">
           <PrimaryInput
             type="email"
             name="email"
