@@ -24,7 +24,7 @@ export const PrimaryInput = ({ type, label, name, margin, padding, placeholder, 
         className={`w-full ${isDark ? "bg-[#3e3e3e] text-white" : "bg-white text-black"} ${typeof padding !== "undefined" ? padding : "py-3 px-4"} drop-shadow-lg outline-none rounded-md`}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        onChange={typeof onChange !== "undefined" ? onChange : ""}
+        onChange={typeof onChange !== "undefined" ? onChange : null}
         autoComplete="off"
         value={value}
       />

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { getAvailableScreenHeight } from "../../functions/functions";
 import { IconContext } from "react-icons";
 import { FaTimes } from "react-icons/fa";
@@ -17,15 +17,13 @@ export const SearchPopup = () => {
 
   return (
     <div
-      className={`${
+      className={`blur-bg ${
         searchActive ? "w-full top-1/2 -translate-y-1/2" : "w-0 top-0"
       } fixed left-1/2 -translate-x-1/2 z-[9999] ${
         searchActive ? "overflow-auto px-4 py-6" : "overflow-hidden p-0"
       } transition-all duration-200`}
       style={{
         height: searchActive ? screenHeight : 0 + "px",
-        background: "rgba(255, 255, 255, 0.3)",
-        backdropFilter: "blur(8px)",
       }}
     >
       <div className="flex items-center justify-end">

@@ -58,3 +58,9 @@ a.large:not([aria-current=page]):hover{color:#5c5c5c;}
   border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
 }
 .blog-link:hover > p {text-decoration:underline;}
+
+.blur-bg {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
