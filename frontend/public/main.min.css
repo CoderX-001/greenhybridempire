@@ -1407,6 +1407,11 @@ a.large:not([aria-current=page]):hover{
   background-color:rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.active\:text-\[\#121212\]:active {
+  --tw-text-opacity:1;
+  color:rgb(18 18 18 / var(--tw-text-opacity));
+}
+
 @media (min-width: 768px) {
   .md\:-left-8 {
     left:-2rem;

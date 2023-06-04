@@ -25,7 +25,7 @@ export const PrimaryInput = ({ type, label, name, margin, padding, placeholder, 
           `w-full 
           ${isDark ? "bg-[#3e3e3e] text-white" : "bg-white text-black"} 
           ${typeof padding !== "undefined" ? padding : "py-3 px-4"} 
-          drop-shadow-lg outline-none rounded`
+          drop-shadow-lg outline-none rounded-md`
         }
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}

@@ -111,7 +111,7 @@ const Mobile = () => {
 
           <button
             onClick={() => setIsDark(!isDark)}
-            className={`relative ${isDark ? "text-secondary" :"text-secondary-gray -scale-x-100 hover:text-[#121212]"} flex items-center gap-x-2`}
+            className={`relative ${isDark ? "text-secondary" :"text-secondary-gray -scale-x-100 active:text-[#121212]"} flex items-center gap-x-2`}
           >
             <IconContext.Provider value={{ className: "text-2xl" }}>
               {isDark ? <HiSun /> : <HiMoon />}
