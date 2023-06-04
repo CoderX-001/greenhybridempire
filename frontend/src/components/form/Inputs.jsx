@@ -21,7 +21,12 @@ export const PrimaryInput = ({ type, label, name, margin, padding, placeholder, 
         type={type}
         name={name}
         placeholder={placeholder ? placeholder : ""}
-        className={`w-full ${isDark ? "bg-[#3e3e3e] text-white" : "bg-white text-black"} ${typeof padding !== "undefined" ? padding : "py-3 px-4"} drop-shadow-lg outline-none rounded`}
+        className={
+          `w-full 
+          ${isDark ? "bg-[#3e3e3e] text-white" : "bg-white text-black"} 
+          ${typeof padding !== "undefined" ? padding : "py-3 px-4"} 
+          drop-shadow-lg outline-none`
+        }
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         onChange={typeof onChange !== "undefined" ? onChange : null}
