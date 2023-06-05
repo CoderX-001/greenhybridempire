@@ -82,8 +82,8 @@ a.large:not([aria-current=page]):hover{color:#5c5c5c;}
   top:0;
   left:0;
   background:rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
 }
 .search-container.active {
   width:100%;
