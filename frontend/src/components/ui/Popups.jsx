@@ -68,7 +68,7 @@ export const SearchPopup = () => {
 
         <div className="mt-6 relative">
           {searchText !== "" ? (
-            <p className="text-2xl text-center text-white drop-shadow-lg shadow-black">
+            <p className="text-2xl text-center text-[#aaa] drop-shadow-lg shadow-black">
               Search results for &quot;{searchText}&quot;
             </p>
           ) : null}
