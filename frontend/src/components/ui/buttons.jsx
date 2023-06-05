@@ -54,12 +54,10 @@ export const ButtonWithIcon = ({
 }) => {
   return (
     <>
-      {link ? (
+      {typeof link !== "undefined" ? (
         <Link
           to={link}
-          className={`${
-            typeof text !== "undefined" ? `flex items-center gap-x-3` : ""
-          } ${typeof buttonStyle !== "undefined" ? buttonStyle : ""} ${
+          className={`${typeof buttonStyle !== "undefined" ? buttonStyle : ""} ${
             typeof backgroundColor !== "undefined" ? backgroundColor : ""
           }  ${typeof textColor !== "undefined" ? textColor : ""} ${
             typeof padding !== "undefined" ? padding : ""

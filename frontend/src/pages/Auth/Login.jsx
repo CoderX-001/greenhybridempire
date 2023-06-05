@@ -62,7 +62,8 @@ const Login = ({
 
             <ButtonWithIcon
               buttonStyle={
-                `flex-row-reverse w-fit mx-auto mb-4 py-2 px-3 rounded-md ${isDark ? "text-primary-gray": "text-black"}
+                `flex items-center gap-x-3 flex-row-reverse w-fit mx-auto mb-4 py-2 px-3 
+                rounded-md ${isDark ? "text-primary-gray" : "text-black"}
                 shadow-md border-[1px] border-primary`
               }
               link="https://www.developer.google.com/"
