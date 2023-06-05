@@ -28,10 +28,10 @@ const Login = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
       )}
 
       <main
-        className={`w-full ${
+        className={`w-full bg-white ${
           screenWidth > 767 ? bodyMargin : ""
           } transition-all duration-300`}
-        style={}
+        style={{height: screenHeight + "px"}}
       >
         
       </main>
