@@ -6,6 +6,10 @@ const Login = ({ screenWidth, bodyWidth, bodyMargin, getNavbarActive }) => {
   const { isDark } = useContext(AppContext);
 
   useEffect(() => {
+    return () => window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     console.log(isDark);
     const setBodyBackground = () => {
       document.body.style.backgroundColor = isDark ? "#121212" : "#f1f1f1";
