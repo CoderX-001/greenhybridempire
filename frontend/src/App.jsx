@@ -28,39 +28,37 @@ const App = () => {
 
   return (
     <div className="App" style={{ backgroundColor: background }}>
-      {/* <BrowserRouter> */}
-        <AppContextProvider>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <Home
-                  screenWidth={screenWidth}
-                  screenHeight={screenHeight}
-                  bodyWidth={bodyWidth}
-                  bodyMargin={bodyMargin}
-                  getNavbarActive={getNavbarActive}
-                  setBodyMargin={setBodyMargin}
-                  setBackground={setBackground}
-                />
-              }
-            />
-            <Route
-              path="/join/login"
-              element={
-                <Login
-                  screenWidth={screenWidth}
-                  screenHeight={screenHeight}
-                  bodyWidth={bodyWidth}
-                  bodyMargin={bodyMargin}
-                  getNavbarActive={getNavbarActive}
-                />
-              }
-            />
-          </Routes>
-        </AppContextProvider>
-      {/* </BrowserRouter> */}
+      <AppContextProvider>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Home
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
+                setBodyMargin={setBodyMargin}
+                setBackground={setBackground}
+              />
+            }
+          />
+          <Route
+            path="/join/login"
+            element={
+              <Login
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
+              />
+            }
+          />
+        </Routes>
+      </AppContextProvider>
     </div>
   );
 };
