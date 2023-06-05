@@ -20,7 +20,7 @@ export const SearchPopup = () => {
 
   return (
     <div
-      className={`w-full fixed z-[9999] top-0 left-0 ${searchActive ? "py-6 px-4 overflow-auto" : "p-0 overflow-hidden"}`}
+      className={`blur-bg w-full fixed z-[9999] top-0 left-0 ${searchActive ? "py-6 px-4 overflow-auto" : "p-0 overflow-hidden"}`}
       style={{
         height: searchActive ? screenHeight + "px" : 0,
         background: "rgba(255, 255, 255, 0.2)",

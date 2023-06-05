@@ -58,3 +58,7 @@ a.large:not([aria-current=page]):hover{color:#5c5c5c;}
 }
 .blog-link:hover > p {text-decoration:underline;}
 
+.blur-bg {
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
