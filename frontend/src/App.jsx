@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <div className="App" style={{ backgroundColor: background }}>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <AppContextProvider>
           <Routes>
             <Route
@@ -60,7 +60,7 @@ const App = () => {
             />
           </Routes>
         </AppContextProvider>
-      {/* </BrowserRouter> */}
+      </BrowserRouter>
     </div>
   );
 };
