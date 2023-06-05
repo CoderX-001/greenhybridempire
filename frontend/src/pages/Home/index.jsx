@@ -1,9 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Mobile, Navbar } from "../../components/navbar";
-import {
-  getAvailableScreenHeight,
-  getAvailableScreenWidth,
-} from "../../functions/functions";
 import { TopNav } from "../../components/navbar/non-mobile";
 import {
   AboutSection,
@@ -17,34 +13,27 @@ import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { Footer } from "../../components/ui";
 
-const Home = () => {
+const Home = ({
+  screenWidth,
+  screenHeight,
+  bodyWidth,
+  bodyMargin,
+  getNavbarActive,
+  setBodyMargin,
+  setBackground,
+}) => {
   const { isDark } = useContext(AppContext);
 
-  const [screenWidth, setScreenWidth] = useState(getAvailableScreenWidth());
-  const [screenHeight, setScreenHeight] = useState(getAvailableScreenHeight());
-  const [bodyWidth, setBodyWidth] = useState(false);
-  const [bodyMargin, setBodyMargin] = useState("ml-20");
-  window.addEventListener("resize", () => {
-    setScreenWidth(getAvailableScreenWidth());
-    setScreenHeight(getAvailableScreenHeight());
-  });
-
-  const getNavbarActive = (nav) => {
-    setBodyWidth(nav);
-    if (bodyMargin === "ml-20") {
-      setBodyMargin("ml-[30%]");
-    } else {
+  useEffect(() => {
+    return () => {
+      getNavbarActive(false);
       setBodyMargin("ml-20");
-    }
-  };
+    };
+  }, [getNavbarActive, setBodyMargin]);
 
   useEffect(() => {
-    const setBodyBackground = () => {
-      document.body.style.backgroundColor = isDark ? "#121212" : "#f1f1f1";
-    };
-
-    setBodyBackground();
-  }, [isDark]);
+    setBackground(isDark ? "#121212" : "#f1f1f1")
+  }, [setBackground, isDark]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-center">

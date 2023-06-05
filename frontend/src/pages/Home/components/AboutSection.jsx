@@ -19,7 +19,7 @@ const AboutSection = () => {
         }}
       ></div>
 
-      <div className="mt-16 lg:w-[60%]">
+      <div className="mt-16 md:w-[60%]">
         <h1 className="text-2xl font-medium text-center mb-4 text-primary md:text-3xl lg:text-4xl">
           What we are about
         </h1>

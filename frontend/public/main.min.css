@@ -1,5 +1,4 @@
 :root {
-  background-color:#f1f1f1;
   font-family:"Rubik", sans-serif;
   scroll-behavior:smooth;
   /* #54712c */
@@ -695,10 +694,6 @@ video {
 
 .ml-7 {
   margin-left:1.75rem;
-}
-
-.ml-\[30\%\] {
-  margin-left:30%;
 }
 
 .ml-\[6px\] {
@@ -1462,6 +1457,10 @@ a.large:not([aria-current=page]):hover{
     width:21rem;
   }
 
+  .md\:w-\[60\%\] {
+    width:60%;
+  }
+
   .md\:w-\[7rem\] {
     width:7rem;
   }
@@ -1541,10 +1540,6 @@ a.large:not([aria-current=page]):hover{
 
   .lg\:w-\[21rem\] {
     width:21rem;
-  }
-
-  .lg\:w-\[60\%\] {
-    width:60%;
   }
 
   .lg\:text-3xl {

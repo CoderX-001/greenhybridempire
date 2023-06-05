@@ -21,7 +21,7 @@ const Mobile = () => {
         } sticky z-40 top-0 flex items-center justify-between px-4 drop-shadow transition-all duration-300`}
       >
         {/* Menu button and logo */}
-        <div className="flex items-center gap-x-8">
+        <div className="flex items-center gap-x-4">
           <button onClick={() => setSideBarActive(true)}>
             <IconContext.Provider
               value={{ className: "text-2xl text-primary" }}

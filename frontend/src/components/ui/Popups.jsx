@@ -20,7 +20,7 @@ export const SearchPopup = () => {
       className={`search-container ${searchActive ? "active" : ""}`}
       style={{height: searchActive ? screenHeight : 0 + "px"}}
     >
-      <div className="flex items-center justify-end">
+      <div className="flex items-center justify-end relative">
         <button
           onClick={() => {
             setInputValue("");
@@ -58,7 +58,7 @@ export const SearchPopup = () => {
         </form>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 relative">
         {searchText !== "" ? (
           <p className="text-2xl text-center text-secondary">
             Search results for &quot;{searchText}&quot;
