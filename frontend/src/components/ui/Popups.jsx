@@ -21,7 +21,7 @@ export const SearchPopup = () => {
   return (
     <div
       className={`blur-bg fixed z-[9999] top-0 left-0 ${
-        searchActive ? "w-full overflow-auto" : "w-0 overflow-hidden"
+        searchActive ? "w-full top-0 left-0 translate-x-0 translate-y-0 overflow-auto" : "w-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden"
       } transition-all duration-200`}
       style={{
         height: searchActive ? screenHeight + "px" : 0,
