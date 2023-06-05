@@ -10,8 +10,8 @@ export const PrimaryInput = ({ type, label, name, margin, padding, placeholder, 
     <div className={`w-full relative ${margin}`}>
       {label ? <label
         htmlFor={name}
-        className={`absolute ${focus
-            ? "-top-7 translate-y-0 ml-0 text-[0.95rem] text-primary"
+        className={`absolute ${focus || value !== ""
+            ? "-top-6 translate-y-0 ml-0 text-[0.95rem] text-primary"
             : "top-1/2 -translate-y-1/2 ml-4 text-gray-400"
           } z-20 transition-all duration-300 pointer-events-none`}
       >
@@ -23,7 +23,7 @@ export const PrimaryInput = ({ type, label, name, margin, padding, placeholder, 
         placeholder={placeholder ? placeholder : ""}
         className={
           `w-full 
-          ${isDark ? "bg-[#3e3e3e] text-white" : "bg-white text-black"} 
+          ${isDark ? "bg-[#3e3e3e] text-primary-gray" : "bg-primary-gray text-black"} 
           ${typeof padding !== "undefined" ? padding : "py-3 px-4"} 
           drop-shadow-lg outline-none rounded-md`
         }

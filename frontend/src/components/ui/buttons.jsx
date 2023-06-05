@@ -14,40 +14,99 @@ export const LinkButtonPrimary = ({ link, text }) => {
 
 export const LinkButtonSecondary = ({ link, text }) => {
   return (
-    <Link to={link} className="text-dark-green bg-primary-gray px-4 py-3 rounded-md shadow-md">
+    <Link
+      to={link}
+      className="text-dark-green bg-primary-gray px-4 py-3 rounded-md shadow-md"
+    >
       {text}
     </Link>
   );
 };
 
-export const ButtonWithIcon = ({link, text, icon, iconSize, func, backgroundColor, textColor, padding, borderRadius, miscStyle}) => {
+export const DefaultSubmitButton = ({ func, text, loader, style }) => {
+  return (
+    <button
+      type="submit"
+      className={typeof style !== "undefined" ? style : ""}
+      onClick={typeof func !== "undefined" ? func : null}
+    >
+      {typeof text !== "undefined" ? <span>{text}</span> : null}
+      {typeof loader !== "undefined" ? loader : null}
+    </button>
+  );
+};
+
+export const ButtonWithIcon = ({
+  link,
+  buttonStyle,
+  text,
+  image,
+  imageAlt,
+  imageStyle,
+  icon,
+  iconSize,
+  func,
+  backgroundColor,
+  textColor,
+  padding,
+  borderRadius,
+  miscStyle,
+}) => {
   return (
     <>
       {link ? (
         <Link
           to={link}
           className={`${
-            typeof text !== "undefined" ? "flex items-center gap-x-3" : ""
-          } ${backgroundColor} ${textColor} ${padding} ${borderRadius}`}
+            typeof text !== "undefined" ? `flex items-center gap-x-3` : ""
+          } ${typeof buttonStyle !== "undefined" ? buttonStyle : ""} ${
+            typeof backgroundColor !== "undefined" ? backgroundColor : ""
+          }  ${typeof textColor !== "undefined" ? textColor : ""} ${
+            typeof padding !== "undefined" ? padding : ""
+          } ${typeof borderRadius !== "undefined" ? borderRadius : ""} ${
+            typeof miscStyle !== "undefined" ? miscStyle : ""
+          }`}
         >
           {typeof text !== "undefined" ? <p>{text}</p> : null}
-          <IconContext.Provider value={{ className: iconSize }}>
-            {icon}
-          </IconContext.Provider>
+          {typeof icon !== "undefined" ? (
+            <IconContext.Provider value={{ className: iconSize }}>
+              {icon}
+            </IconContext.Provider>
+          ) : null}
+          {typeof image !== "undefined" ? (
+            <img src={image} alt={imageAlt} className={imageStyle} />
+          ) : null}
         </Link>
       ) : (
         <button
           onClick={func}
           className={`${
-            typeof text !== "undefined" ? "flex items-center gap-x-3" : ""
-          } ${backgroundColor} ${textColor} ${padding} ${borderRadius} ${typeof miscStyle !== "undefined" ? miscStyle : ""}`}
+            typeof text !== "undefined"
+              ? "flex items-center gap-x-3" + typeof buttonStyle !== "undefined"
+                ? buttonStyle
+                : ""
+              : ""
+          } 
+            ${typeof backgroundColor !== "undefined" ? backgroundColor : ""} 
+            ${typeof textColor !== "undefined" ? textColor : ""} 
+            ${typeof padding !== "undefined" ? padding : ""} 
+            ${typeof borderRadius !== "undefined" ? borderRadius : ""} 
+            ${typeof miscStyle !== "undefined" ? miscStyle : ""}
+          `}
         >
-          {typeof text !== "undefined" ? <p className="text-lg">{text}</p> : null}
-          {typeof icon !== "undefined" ? <IconContext.Provider value={{ className: iconSize }}>
-            {icon}
-          </IconContext.Provider> : ""}
+          {typeof text !== "undefined" ? (
+            <p className="text-lg">{text}</p>
+          ) : null}
+          {typeof icon !== "undefined" ? (
+            <IconContext.Provider value={{ className: iconSize }}>
+              {icon}
+            </IconContext.Provider>
+          ) : null}
+          {typeof image !== "undefined" ? (
+            <img src={image} alt={imageAlt} className={imageStyle} />
+          ) : null}
         </button>
       )}
     </>
   );
-}
+};
