@@ -23,7 +23,7 @@ const TopNav = () => {
           <AiOutlineBell />
         </IconContext.Provider>
 
-        <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div>
+        {/* <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div> */}
       </Link>
 
       <Link
@@ -36,7 +36,7 @@ const TopNav = () => {
           <AiOutlineShopping />
         </IconContext.Provider>
 
-        <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
+        {/* <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div> */}
       </Link>
     </nav>
   );

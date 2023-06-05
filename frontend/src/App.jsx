@@ -51,6 +51,7 @@ const App = () => {
               element={
                 <Login
                   screenWidth={screenWidth}
+                  screenHeight={screenHeight}
                   bodyWidth={bodyWidth}
                   bodyMargin={bodyMargin}
                   getNavbarActive={getNavbarActive}

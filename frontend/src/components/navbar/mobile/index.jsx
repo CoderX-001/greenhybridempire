@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { SearchPopup } from "../../ui/Popups";
 
-const Mobile = () => {
+const Mobile = ({options}) => {
   const [sideBarActive, setSideBarActive] = useState(false);
   const { isDark, setIsDark } = useContext(AppContext);
 
@@ -81,33 +81,37 @@ const Mobile = () => {
         </div>
 
         <div className="flex items-center gap-x-4">
-          <div className="flex items-center gap-x-4">
-            <Link
-              to="/notifications"
-              className={`relative ${isDark ? "text-primary" : "text-black"}`}
-            >
-              <IconContext.Provider value={{ className: "text-2xl" }}>
-                <AiOutlineBell />
-              </IconContext.Provider>
+          {
+            typeof options === "undefined" || options === true ? (
+              <div className="flex items-center gap-x-4">
+                <Link
+                  to="/notifications"
+                  className={`relative ${isDark ? "text-primary" : "text-black"}`}
+                >
+                  <IconContext.Provider value={{ className: "text-2xl" }}>
+                    <AiOutlineBell />
+                  </IconContext.Provider>
 
-              {sideBarActive ? (
-                <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div>
-              ) : null}
-            </Link>
+                  {/* {sideBarActive ? (
+                    <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div>
+                  ) : null} */}
+                </Link>
 
-            <Link
-              to="/cart"
-              className={`relative ${isDark ? "text-primary" : "text-black"}`}
-            >
-              <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
-                <AiOutlineShopping />
-              </IconContext.Provider>
+                <Link
+                  to="/cart"
+                  className={`relative ${isDark ? "text-primary" : "text-black"}`}
+                >
+                  <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
+                    <AiOutlineShopping />
+                  </IconContext.Provider>
 
-              {sideBarActive ? (
-                <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
-              ) : null}
-            </Link>
-          </div>
+                  {/* {sideBarActive ? (
+                    <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
+                  ) : null} */}
+                </Link>
+              </div>
+            ) : null
+          }
 
           <button
             onClick={() => setIsDark(!isDark)}
