@@ -25,6 +25,10 @@ const Home = ({
   const { isDark } = useContext(AppContext);
 
   useEffect(() => {
+    return () => window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     return () => {
       getNavbarActive(false);
       setBodyMargin("ml-20");
