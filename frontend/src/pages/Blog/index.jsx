@@ -3,8 +3,9 @@ import { Mobile } from "../../components/navbar";
 import Navbar, { TopNav } from "../../components/navbar/non-mobile";
 import { AppContext } from "../../contexts/AppContext";
 import BlogIntro from "./components/BlogIntro";
+import BlogList from "./components/BlogList";
 
-const Blogs = ({ screenWidth, bodyWidth, bodyMargin, getNavbarActive, setBackground }) => {
+const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActive, setBackground }) => {
   const { isDark } = useContext(AppContext);
 
   useEffect(() => {
@@ -26,11 +27,13 @@ const Blogs = ({ screenWidth, bodyWidth, bodyMargin, getNavbarActive, setBackgro
       <main
         className={`w-full ${
           screenWidth > 767 ? bodyMargin : ""
-        } transition-all duration-300`}
+        } transition-all duration-300`} style={{minHeight: screenHeight + "px"}}
       >
         {screenWidth > 767 ? <TopNav /> : null}
 
         <BlogIntro screenWidth={screenWidth} bodyMargin={bodyMargin} />
+
+        <BlogList style="mt-16 px-4" />
       </main>
     </div>
   );

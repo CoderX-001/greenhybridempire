@@ -75,6 +75,7 @@ const App = () => {
             element={
               <Blogs
                 screenWidth={screenWidth}
+                screenHeight={screenHeight}
                 bodyWidth={bodyWidth}
                 bodyMargin={bodyMargin}
                 getNavbarActive={getNavbarActive}

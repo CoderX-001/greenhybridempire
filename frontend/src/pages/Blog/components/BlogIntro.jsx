@@ -6,7 +6,7 @@ const BlogIntro = ({screenWidth, bodyMargin}) => {
 
   return (
     <div
-      className={`w-full px-4 pt-12 ${
+      className={`w-full px-4 py-12 ${
         isDark ? "bg-[#3e3e3e]" : "bg-primary-gray"
       } ${screenWidth > 767 ? bodyMargin : ""} transition-all duration-300`}
     >
