@@ -4,7 +4,7 @@ const BlogItem = ({ post }) => {
   console.log(post.categories);
 
   return (
-    <div className="w-[15rem] bg-white drop-shadow-md overflow-hidden rounded-md pb-4">
+    <div className="w-[15rem] bg-white drop-shadow-lg overflow-hidden rounded-md pb-4">
       <img
         src={post.postImage}
         alt={post.title.substr(0, 17).trim() + "... image"}
@@ -30,7 +30,7 @@ const BlogItem = ({ post }) => {
         <h2 className="w-full font-medium overflow-hidden text-ellipsis whitespace-nowrap">
           {post.title}
         </h2>
-        <p className="multiline-break">{ post.content }</p>
+        <p className="multiline-break text-[0.9rem]">{ post.content }</p>
       </div>
     </div>
   );
