@@ -14,7 +14,9 @@ const BlogSearchAndFilter = () => {
           name="blog-search"
           placeholder="What post are you looking for?"
           type="text"
-          style={`w-full px-4 py-3 rounded-md ${isDark ? "bg-[#3e3e3e]" : "bg-white"}`}
+          style={`w-full pl-4 pr-16 py-3 outline-primary rounded-md ${
+            isDark ? "bg-[#3e3e3e]" : "bg-white"
+          }`}
         />
         <ButtonWithIcon
           icon={<BiSearch />}

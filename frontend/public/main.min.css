@@ -1244,6 +1244,18 @@ video {
   padding-top:20%;
 }
 
+.pr-8 {
+  padding-right:2rem;
+}
+
+.pr-12 {
+  padding-right:3rem;
+}
+
+.pr-20 {
+  padding-right:5rem;
+}
+
 .text-center {
   text-align:center;
 }
@@ -1378,6 +1390,10 @@ video {
 .outline-none {
   outline:2px solid transparent;
   outline-offset:2px;
+}
+
+.outline-primary {
+  outline-color:#33b160;
 }
 
 .blur {
