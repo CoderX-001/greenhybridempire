@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Mobile } from "../../components/navbar";
 import Navbar, { TopNav } from "../../components/navbar/non-mobile";
 import { AppContext } from "../../contexts/AppContext";
@@ -9,6 +9,8 @@ import BlogSearchAndFilter from "./components/BlogSearchAndFilter";
 
 const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActive, setBackground }) => {
   const { isDark } = useContext(AppContext);
+
+  const [itemsDown, setItemsDown] = useState(false)
 
   useEffect(() => {
     return () => window.scrollTo(0, 0);
@@ -35,9 +37,9 @@ const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
 
         <BlogIntro screenWidth={screenWidth} bodyMargin={bodyMargin} />
 
-        <BlogSearchAndFilter />
+        <BlogSearchAndFilter setItemsDown={setItemsDown} itemsDown={itemsDown} />
 
-        <BlogList style="mt-16 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6" />
+        <BlogList style={`${itemsDown ? "mt-40" : "mt-16"} transition-all duration-200 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6`} />
 
         <Footer />
       </main>
