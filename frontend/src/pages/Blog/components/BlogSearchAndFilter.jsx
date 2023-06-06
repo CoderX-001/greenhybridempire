@@ -9,17 +9,17 @@ const BlogSearchAndFilter = () => {
 
   return (
     <div className="px-4 mt-8">
-      <form method="POST" className="relative w-[85%] bg-red-500">
+      <form method="POST" className="relative max-w-[30rem] mx-auto">
         <DefaultInput
           name="blog-search"
-          placeholder="Search blogs..."
+          placeholder="What post are you looking for?"
           type="text"
           style={`w-full px-4 py-3 rounded-md ${isDark ? "bg-[#3e3e3e]" : "bg-white"}`}
         />
         <ButtonWithIcon
           icon={<BiSearch />}
           iconSize="text-2xl"
-          buttonStyle="absolute top-1/2 -translate-y-1/2 right-4 bg-primary text-secondary px-3 py-2 rounded-md"
+          buttonStyle="absolute top-1/2 -translate-y-1/2 right-2 bg-primary text-secondary px-3 py-2 rounded-md"
         />
       </form>
     </div>

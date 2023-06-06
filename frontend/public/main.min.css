@@ -615,6 +615,10 @@ video {
   right:1rem;
 }
 
+.right-2 {
+  right:0.5rem;
+}
+
 .z-20 {
   z-index:20;
 }
@@ -878,8 +882,20 @@ video {
   width:85%;
 }
 
+.w-\[20rem\] {
+  width:20rem;
+}
+
+.w-\[25rem\] {
+  width:25rem;
+}
+
 .max-w-\[20rem\] {
   max-width:20rem;
+}
+
+.max-w-\[30rem\] {
+  max-width:30rem;
 }
 
 .grow {
