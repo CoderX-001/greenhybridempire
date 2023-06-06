@@ -27,9 +27,10 @@ const BlogItem = ({ post }) => {
         </div>
 
         {/* Title */}
-        <h2 className="w-full overflow-hidden text-ellipsis whitespace-nowrap">
+        <h2 className="w-full font-medium overflow-hidden text-ellipsis whitespace-nowrap">
           {post.title}
         </h2>
+        <p className="multiline-break">{ post.content }</p>
       </div>
     </div>
   );

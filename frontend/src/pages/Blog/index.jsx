@@ -33,7 +33,7 @@ const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
 
         <BlogIntro screenWidth={screenWidth} bodyMargin={bodyMargin} />
 
-        <BlogList style="mt-16 px-4 flex items-center flex-wrap gap-x-3 gap-y-6" />
+        <BlogList style="mt-16 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6" />
       </main>
     </div>
   );
