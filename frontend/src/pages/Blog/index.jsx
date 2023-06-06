@@ -4,6 +4,8 @@ import Navbar, { TopNav } from "../../components/navbar/non-mobile";
 import { AppContext } from "../../contexts/AppContext";
 import BlogIntro from "./components/BlogIntro";
 import BlogList from "./components/BlogList";
+import { Footer } from "../../components/ui";
+import BlogSearchAndFilter from "./components/BlogSearchAndFilter";
 
 const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActive, setBackground }) => {
   const { isDark } = useContext(AppContext);
@@ -33,7 +35,11 @@ const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
 
         <BlogIntro screenWidth={screenWidth} bodyMargin={bodyMargin} />
 
+        <BlogSearchAndFilter />
+
         <BlogList style="mt-16 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6" />
+
+        <Footer />
       </main>
     </div>
   );
