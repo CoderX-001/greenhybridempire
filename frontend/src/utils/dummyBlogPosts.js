@@ -15,7 +15,7 @@ export const posts = [
   },
   {
     "date-created": "08 Jan 2023",
-    categories: ["Palm tree", "coconut"],
+    categories: ["Palm tree", "Coconut"],
     title:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ea adipisci repudiandae quae.",
     content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quam quaerat earum, perspiciatis animi aperiam doloribus? Cum maiores error voluptas distinctio sapiente, exercitationem, facere assumenda fugit dolore, ullam rem quam.
       Laboriosam similique ut enim nostrum nisi quia voluptatum quas odit eum recusandae maxime excepturi, quam nemo non itaque quis neque nulla iure mollitia ipsum cum. Quam at aut nisi nostrum.
@@ -39,7 +39,7 @@ export const posts = [
   },
   {
     "date-created": "18 Jan 2023",
-    categories: ["Palm tree", "coconut"],
+    categories: ["Palm tree", "Coconut"],
     title:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Non ea adipisci repudiandae quae.",
     content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quam quaerat earum, perspiciatis animi aperiam doloribus? Cum maiores error voluptas distinctio sapiente, exercitationem, facere assumenda fugit dolore, ullam rem quam.
       Laboriosam similique ut enim nostrum nisi quia voluptatum quas odit eum recusandae maxime excepturi, quam nemo non itaque quis neque nulla iure mollitia ipsum cum. Quam at aut nisi nostrum.
