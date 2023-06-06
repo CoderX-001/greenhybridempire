@@ -36,15 +36,11 @@ const SearchFilter = ({ mainState, stateFunc, secStateFunc, bodyFunc, value, val
 
       {/* Dropdown */}
       <div
-        className={`bg-primary absolute flex flex-wrap justify-center gap-3 ${
-          mainState
-            ? "w-full h-fit left-0 translate-x-0 px-2 py-3 mt-2 overflow-auto"
-            : "w-0 h-0 m-0 left-1/2 -translate-x-1/2 overflow-hidden"
-        } rounded-md transition-all duration-200`}
+        className={`w-full h-fit px-2 py-3 mt-2 overflow-auto bg-primary absolute left-0 flex-wrap justify-center gap-3 ${
+          mainState ? "flex" : "hidden"} rounded-md transition-all duration-200`}
       >
-        {
-          mainState ? 
-            filteredItem.map((filter) => (
+        {mainState
+          ? filteredItem.map((filter) => (
               <button
                 onClick={(e) => valueFunc(e.target.value)}
                 className={`inline-block w-fit p-2 text-primary-gray rounded-md bg-[#f1f1f11a] active:bg-[#f1f1f140]`}
@@ -54,8 +50,7 @@ const SearchFilter = ({ mainState, stateFunc, secStateFunc, bodyFunc, value, val
                 {filter}
               </button>
             ))
-          : null
-        }
+          : null}
       </div>
     </div>
   );
