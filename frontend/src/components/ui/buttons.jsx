@@ -57,13 +57,13 @@ export const ButtonWithIcon = ({
       {typeof link !== "undefined" ? (
         <Link
           to={link}
-          className={`${typeof buttonStyle !== "undefined" ? buttonStyle : ""} ${
-            typeof backgroundColor !== "undefined" ? backgroundColor : ""
-          }  ${typeof textColor !== "undefined" ? textColor : ""} ${
-            typeof padding !== "undefined" ? padding : ""
-          } ${typeof borderRadius !== "undefined" ? borderRadius : ""} ${
-            typeof miscStyle !== "undefined" ? miscStyle : ""
-          }`}
+          className={`${
+            typeof buttonStyle !== "undefined" ? buttonStyle : ""
+          } ${typeof backgroundColor !== "undefined" ? backgroundColor : ""}  ${
+            typeof textColor !== "undefined" ? textColor : ""
+          } ${typeof padding !== "undefined" ? padding : ""} ${
+            typeof borderRadius !== "undefined" ? borderRadius : ""
+          } ${typeof miscStyle !== "undefined" ? miscStyle : ""}`}
         >
           {typeof text !== "undefined" ? <p>{text}</p> : null}
           {typeof icon !== "undefined" ? (
@@ -78,13 +78,7 @@ export const ButtonWithIcon = ({
       ) : (
         <button
           onClick={func}
-          className={`${
-            typeof text !== "undefined"
-              ? "flex items-center gap-x-3" + typeof buttonStyle !== "undefined"
-                ? buttonStyle
-                : ""
-              : ""
-          } 
+          className={`${typeof buttonStyle !== "undefined" ? buttonStyle : ""}
             ${typeof backgroundColor !== "undefined" ? backgroundColor : ""} 
             ${typeof textColor !== "undefined" ? textColor : ""} 
             ${typeof padding !== "undefined" ? padding : ""} 

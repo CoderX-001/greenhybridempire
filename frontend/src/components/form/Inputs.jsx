@@ -64,7 +64,7 @@ export const PrimaryInput = ({
               : "bg-primary-gray text-black"
           } 
           ${typeof padding !== "undefined" ? padding : "py-3 px-4"} 
-          drop-shadow-lg outline-none rounded-md`}
+          drop-shadow-md outline-none rounded-md`}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         onChange={typeof onChange !== "undefined" ? onChange : null}

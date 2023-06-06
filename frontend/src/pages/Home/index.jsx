@@ -19,7 +19,6 @@ const Home = ({
   bodyWidth,
   bodyMargin,
   getNavbarActive,
-  setBodyMargin,
   setBackground,
 }) => {
   const { isDark } = useContext(AppContext);
@@ -27,13 +26,6 @@ const Home = ({
   useEffect(() => {
     return () => window.scrollTo(0, 0)
   }, [])
-
-  useEffect(() => {
-    return () => {
-      getNavbarActive(false);
-      setBodyMargin("ml-20");
-    };
-  }, [getNavbarActive, setBodyMargin]);
 
   useEffect(() => {
     setBackground(isDark ? "#121212" : "#f1f1f1")

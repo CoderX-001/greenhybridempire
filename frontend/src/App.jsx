@@ -1,12 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import AppContextProvider from "./contexts/AppContext";
-import Home from "./pages/Home";
-import { Login } from "./pages/Auth";
+import { Blogs, Home, Login, Signup, SingleBlog } from "./pages";
 import {
   getAvailableScreenHeight,
   getAvailableScreenWidth,
 } from "./functions/functions";
-import { useState } from "react";
 
 const App = () => {
   const [screenWidth, setScreenWidth] = useState(getAvailableScreenWidth());
@@ -54,9 +53,36 @@ const App = () => {
                 bodyWidth={bodyWidth}
                 bodyMargin={bodyMargin}
                 getNavbarActive={getNavbarActive}
+                setBackground={setBackground}
               />
             }
           />
+          <Route
+            path="/join/signup"
+            element={
+              <Signup
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
+                setBackground={setBackground}
+              />
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <Blogs
+                screenWidth={screenWidth}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
+                setBackground={setBackground}
+              />
+            }
+          />
+          <Route path="/blog/:id" element={<SingleBlog setBackground={setBackground} />} />
         </Routes>
       </AppContextProvider>
     </div>

@@ -1,27 +1,19 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../contexts/AppContext";
 import { Mobile, Navbar } from "../../components/navbar";
-import { DefaultSubmitButton } from "../../components/ui/buttons";
+import { AppContext } from "../../contexts/AppContext";
 import { PrimaryInput } from "../../components/form/Inputs";
+import { DefaultSubmitButton } from "../../components/ui/buttons";
 import { Link } from "react-router-dom";
 
-const Login = ({
-  screenWidth,
-  screenHeight,
-  bodyWidth,
-  bodyMargin,
-  getNavbarActive,
-  setBackground
-}) => {
+const Signup = ({screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActive, setBackground}) => {
   const { isDark } = useContext(AppContext);
 
-  const [emailuid, setEmailUid] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [password, setPassword] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setEmailUid("")
-    setPassword("")
   }
 
   useEffect(() => {
@@ -51,18 +43,32 @@ const Login = ({
           <div className="relative mt-16 pb-8">
             <div className="w-fit mx-auto mb-10">
               <h1 className="text-2xl text-primary font-semibold">
-                Hi! Welcome back
+                Create an account
               </h1>
-              <p className={isDark ? "text-primary-gray" : "text-black"}>Please enter your details to continue.</p>
+              <p className={isDark ? "text-primary-gray" : "text-black"}>
+                Sign up today to get unique access.
+              </p>
             </div>
 
-            <form onSubmit={handleSubmit} method="POST" className="w-3/4 mx-auto">
+            <form
+              onSubmit={handleSubmit}
+              method="POST"
+              className="w-3/4 mx-auto"
+            >
               <PrimaryInput
-                type="text"
-                label="Email or Phone number"
-                name="emailuid"
-                onChange={(e) => setEmailUid(e.target.value)}
-                value={emailuid}
+                type="email"
+                label="Email"
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                margin="mb-10"
+              />
+              <PrimaryInput
+                type="tel"
+                label="Phone number"
+                name="phone"
+                onChange={(e) => setPhone(e.target.value)}
+                value={phone}
                 margin="mb-10"
               />
               <PrimaryInput
@@ -73,13 +79,20 @@ const Login = ({
                 value={password}
                 margin="mb-10"
               />
-              <DefaultSubmitButton text="Log in" style="w-full py-3 bg-primary text-primary-gray rounded-md mb-6" />
+              <DefaultSubmitButton
+                text="Create account"
+                style="w-full py-3 bg-primary text-primary-gray rounded-md mb-6"
+              />
             </form>
 
-            <p className={`text-center ${isDark ? "text-primary-gray" : "text-black"}`}>
-              Don&apos;t have an account?{" "}
-              <Link to="/join/signup" className="font-medium text-primary">
-                Sign up for free
+            <p
+              className={`text-center ${
+                isDark ? "text-primary-gray" : "text-black"
+              }`}
+            >
+              Got an existing account?{" "}
+              <Link to="/join/login" className="font-medium text-primary">
+                Log in
               </Link>
             </p>
           </div>
@@ -90,4 +103,4 @@ const Login = ({
   );
 };
 
-export default Login;
+export default Signup;
