@@ -83,7 +83,19 @@ const App = () => {
               />
             }
           />
-          <Route path="/blog/:id" element={<SingleBlog setBackground={setBackground} />} />
+          <Route
+            path="/blog/:id"
+            element={
+              <SingleBlog
+                setBackground={setBackground}
+                screenWidth={screenWidth}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                screenHeight={screenHeight}
+                getNavbarActive={getNavbarActive}
+              />
+            }
+          />
         </Routes>
       </AppContextProvider>
     </div>

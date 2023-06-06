@@ -892,6 +892,14 @@ video {
   height:4rem;
 }
 
+.h-\[20rem\] {
+  height:20rem;
+}
+
+.h-\[16rem\] {
+  height:16rem;
+}
+
 .min-h-\[13rem\] {
   min-height:13rem;
 }

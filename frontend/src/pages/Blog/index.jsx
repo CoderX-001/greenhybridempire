@@ -37,7 +37,7 @@ const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
 
         <BlogIntro screenWidth={screenWidth} bodyMargin={bodyMargin} />
 
-        <BlogSearchAndFilter setItemsDown={setItemsDown} itemsDown={itemsDown} />
+        <BlogSearchAndFilter setItemsDown={setItemsDown} />
 
         <BlogList style={`${itemsDown ? "mt-40" : "mt-16"} transition-all duration-200 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6`} />
 
