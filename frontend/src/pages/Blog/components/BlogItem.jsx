@@ -6,7 +6,7 @@ const BlogItem = ({ post }) => {
   const { isDark } = useContext(AppContext)
 
   return (
-    <div className={`w-[15rem] ${isDark ? "bg-[#3e3e3e] text-primary-gray" : "bg-white text-black"} drop-shadow-lg overflow-hidden rounded-md pb-4`}>
+    <div className={`w-[15rem] ${isDark ? "bg-[#3e3e3e] text-primary-gray" : "bg-white text-black"} shadow-lg overflow-hidden rounded-md pb-4`}>
       <img
         src={post.postImage}
         alt={post.title.substr(0, 17).trim() + "... image"}
