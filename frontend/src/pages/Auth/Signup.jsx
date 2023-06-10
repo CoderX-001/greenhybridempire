@@ -3,21 +3,89 @@ import { Mobile, Navbar } from "../../components/navbar";
 import { AppContext } from "../../contexts/AppContext";
 import { PrimaryInput } from "../../components/form/Inputs";
 import { DefaultSubmitButton } from "../../components/ui/buttons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { toastError, toastSuccess } from "../../hooks/useToast";
+import { ToastContainer } from "react-toastify";
+import axios from "axios";
+import { IconContext } from "react-icons";
+import { BiLoaderAlt } from "react-icons/bi";
 
-const Signup = ({screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActive, setBackground}) => {
-  const { isDark } = useContext(AppContext);
+const Signup = ({
+  screenWidth,
+  screenHeight,
+  bodyWidth,
+  bodyMargin,
+  getNavbarActive,
+  setBackground,
+}) => {
+  const [params, setParams] = useSearchParams();
+  const { isDark, authStates } = useContext(AppContext);
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+    setIsPending(true);
+
+    if (name !== "" && email !== "" && password !== "") {
+      // Send request to the backend to authenticate the provided details
+      const data = { name, email, password };
+
+      axios
+        .post("http://localhost:3173/api/v1/auth/signup", data)
+        .then((response) => {
+          const { setAuthState } = authStates;
+
+          const authStateUser = {
+            authenticated: true,
+            user: response.data.user,
+          };
+
+          setAuthState(authStateUser);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+
+          const location =
+            params.get("location") !== null
+              ? `/${params.get("location")}`
+              : "/";
+
+          setIsPending(false);
+          setName("");
+          setEmail("");
+          setPassword("");
+          toastSuccess("Login successful!");
+
+          navigate(location);
+        })
+        .catch((err) => {
+          setIsPending(false);
+          if (err.code === "ERR_NETWORK") {
+            toastError("Something went wrong. Try again.");
+          } else {
+            toastError(err.response.data.error);
+          }
+        });
+    } else {
+      setIsPending(false);
+      // Send error message if fields are empty
+      const error = "Please fill all empty field!";
+      toastError(error);
+    }
+  };
 
   useEffect(() => {
-    return () => window.scrollTo(0, 0);
+    return () => {
+      const { authState } = authStates;
+      if (typeof authState.authenticated !== "undefined")
+        return (location.href = "/");
+      window.scrollTo(0, 0);
+      document.title = "Signup - Green Hybrid Empire";
+    };
   }, []);
 
   useEffect(() => {
@@ -26,6 +94,7 @@ const Signup = ({screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
 
   return (
     <div className="flex flex-col md:flex-row md:justify-center">
+      <ToastContainer />
       {screenWidth < 768 ? (
         <Mobile options={false} />
       ) : (
@@ -36,11 +105,11 @@ const Signup = ({screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
         className={`w-full ${isDark ? "bg-[#121212]" : "bg-white"} ${
           screenWidth > 767 ? bodyMargin : ""
         } transition-all duration-300`}
-        style={{ minHeight: screenHeight + "px" }}
+        style={{ height: screenHeight - 80 + "px" }}
       >
         <div className="relative">
           {/* form */}
-          <div className="relative mt-16 pb-8">
+          <div className="relative mt-12 pb-8">
             <div className="w-fit mx-auto mb-10">
               <h1 className="text-2xl text-primary font-semibold">
                 Create an account
@@ -56,19 +125,19 @@ const Signup = ({screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
               className="w-3/4 mx-auto"
             >
               <PrimaryInput
+                type="text"
+                label="Name"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                margin="mb-10"
+              />
+              <PrimaryInput
                 type="email"
                 label="Email"
                 name="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                margin="mb-10"
-              />
-              <PrimaryInput
-                type="tel"
-                label="Phone number"
-                name="phone"
-                onChange={(e) => setPhone(e.target.value)}
-                value={phone}
                 margin="mb-10"
               />
               <PrimaryInput
@@ -79,10 +148,20 @@ const Signup = ({screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
                 value={password}
                 margin="mb-10"
               />
-              <DefaultSubmitButton
-                text="Create account"
-                style="w-full py-3 bg-primary text-primary-gray rounded-md mb-6"
-              />
+              {!isPending ? (
+                <DefaultSubmitButton
+                  text="Create account"
+                  style="w-full py-3 bg-primary text-primary-gray rounded-md mb-6"
+                />
+              ) : (
+                <button className="w-full py-3 bg-primary text-primary-gray rounded-md mb-6">
+                  <IconContext.Provider
+                    value={{ className: "w-fit mx-auto text-2xl animate-spin" }}
+                  >
+                    <BiLoaderAlt />
+                  </IconContext.Provider>
+                </button>
+              )}
             </form>
 
             <p

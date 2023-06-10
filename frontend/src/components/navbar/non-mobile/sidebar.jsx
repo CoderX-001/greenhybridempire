@@ -1,20 +1,18 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { getAvailableScreenHeight } from "../../../functions/functions";
 import { IconContext } from "react-icons";
 import { AiFillShop, AiOutlineUser } from "react-icons/ai";
 import { BiHome, BiMoon, BiNews, BiSearch, BiSun } from "react-icons/bi";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { AppContext } from "../../../contexts/AppContext";
 
-const Sidebar = ({ navFunc }) => {
+const Sidebar = ({ navFunc, screenHeight }) => {
   const { isDark, setIsDark } = useContext(AppContext)
+  const styleScoped = {
+    height: screenHeight,
+  };
   
-  const [screenHeight, setScreenHeight] = useState(getAvailableScreenHeight());
   const [sideBar, setSideBar] = useState(false)
-  window.addEventListener("resize", () =>
-    setScreenHeight(getAvailableScreenHeight())
-  );
 
   const updateNav = () => {
     navFunc(!sideBar);
@@ -23,12 +21,11 @@ const Sidebar = ({ navFunc }) => {
 
   return (
     <aside
-      className={`${sideBar ? "w-[30%]" : "w-20"} fixed z-50 top-0 left-0 ${
-        isDark ? "bg-[#121212 ]" : "bg-white"
-      } py-6 ${
-        sideBar ? "px-6" : "flex flex-col items-center"
-      } transition-[width,color] duration-300 drop-shadow-lg`}
-      style={{ height: screenHeight + "px" }}
+      className={`${sideBar ? "w-[30%] px-6" : "w-20 flex flex-col items-center"} 
+      fixed z-[9999] top-0 left-0
+      ${isDark ? "bg-[#121212 ]" : "bg-white"} 
+      py-6 transition-[width,color] duration-300 drop-shadow-lg`}
+      style={styleScoped}
     >
       <Link to="/">
         <svg

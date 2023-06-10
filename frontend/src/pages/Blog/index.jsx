@@ -6,19 +6,56 @@ import BlogIntro from "./components/BlogIntro";
 import BlogList from "./components/BlogList";
 import { Footer } from "../../components/ui";
 import BlogSearchAndFilter from "./components/BlogSearchAndFilter";
+import { useNavigate } from "react-router-dom";
+import InfoPage from "../InfoPage";
+import Loading from "../Loading";
 
-const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActive, setBackground }) => {
-  const { isDark } = useContext(AppContext);
+const Blogs = ({
+  screenWidth,
+  screenHeight,
+  bodyWidth,
+  bodyMargin,
+  getNavbarActive,
+  setBackground,
+}) => {
+  const { isDark, authStates } = useContext(AppContext);
+  const navigate = useNavigate();
 
-  const [itemsDown, setItemsDown] = useState(false)
+  const [isPending, setIsPending] = useState(false);
+  const [itemsDown, setItemsDown] = useState(false);
+  const { authState } = authStates;
 
   useEffect(() => {
-    return () => window.scrollTo(0, 0);
+    return () => {
+      window.scrollTo(0, 0);
+      document.title = "Blog - Green Hybrid Empire";
+
+      if (typeof authState.authenticated !== "undefined") {
+        setIsPending(true);
+        setTimeout(() => {
+          setIsPending(false);
+        }, 3000);
+      }
+    };
   }, []);
 
   useEffect(() => {
     setBackground(isDark ? "#121212" : "#f1f1f1");
   }, [setBackground, isDark]);
+
+  if (isPending) return <Loading />;
+
+  if (typeof authState.authenticated === "undefined")
+    return (
+      <InfoPage
+        bodyMargin={bodyMargin}
+        bodyWidth={bodyWidth}
+        getNavbarActive={getNavbarActive}
+        screenHeight={screenHeight}
+        screenWidth={screenWidth}
+        location="/join/login?location=blog"
+      />
+    );
 
   return (
     <div className="flex flex-col md:flex-row md:justify-center">
@@ -31,7 +68,8 @@ const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
       <main
         className={`w-full ${
           screenWidth > 767 ? bodyMargin : ""
-        } transition-all duration-300`} style={{minHeight: screenHeight + "px"}}
+        } transition-all duration-300`}
+        style={{ minHeight: screenHeight + "px" }}
       >
         {screenWidth > 767 ? <TopNav /> : null}
 
@@ -39,7 +77,11 @@ const Blogs = ({ screenWidth, screenHeight, bodyWidth, bodyMargin, getNavbarActi
 
         <BlogSearchAndFilter setItemsDown={setItemsDown} />
 
-        <BlogList style={`${itemsDown ? "mt-40" : "mt-16"} transition-all duration-200 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6`} />
+        <BlogList
+          style={`${
+            itemsDown ? "mt-40" : "mt-16"
+          } transition-all duration-200 px-4 pb-20 flex items-center flex-wrap justify-center gap-x-3 gap-y-6`}
+        />
 
         <Footer />
       </main>

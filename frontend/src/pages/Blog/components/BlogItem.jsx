@@ -6,11 +6,15 @@ const BlogItem = ({ post }) => {
   const { isDark } = useContext(AppContext)
 
   return (
-    <div className={`w-[15rem] ${isDark ? "bg-[#3e3e3e] text-primary-gray" : "bg-white text-black"} shadow-lg overflow-hidden rounded-md pb-4`}>
+    <div
+      className={`w-[15rem] ${
+        isDark ? "bg-[#3e3e3e] text-primary-gray" : "bg-white text-black"
+      } shadow-lg overflow-hidden rounded-md pb-4`}
+    >
       <img
         src={post.postImage}
         alt={post.title.substr(0, 17).trim() + "... image"}
-        className="w-full h-[12rem] object-cover mb-2"
+        className="w-full h-[9rem] object-cover mb-2"
       />
 
       {/* Content */}
@@ -20,7 +24,12 @@ const BlogItem = ({ post }) => {
         </p>
 
         {/* Title */}
-        <Link to={`/blog/${post.id}`} className={`block w-full ${isDark ? "text-primary" : "text-black"} font-medium overflow-hidden text-ellipsis whitespace-nowrap`}>
+        <Link
+          to={`/blog/${post.id}`}
+          className={`block w-full ${
+            isDark ? "text-primary" : "text-black"
+          } font-medium overflow-hidden text-ellipsis whitespace-nowrap`}
+        >
           {post.title}
         </Link>
         <p className="multiline-break text-[0.9rem]">{post.content}</p>

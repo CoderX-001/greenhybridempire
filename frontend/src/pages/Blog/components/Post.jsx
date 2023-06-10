@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import { posts } from "../../../utils/dummyBlogPosts";
+import { useEffect } from "react";
+import Loading from "../../Loading";
 
-const Post = ({ postID }) => {
-  const singlePost = posts.filter(post => {
-    return post.id === postID
-  })
+const Post = ({ postID, screenHeight, setBlogName }) => {
+  const singlePost = posts.filter((post) => {
+    return post.id === postID;
+  });
+
+  useEffect(() => {
+    setBlogName(singlePost[0].title);
+  }, [singlePost]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white" style={{ height: screenHeight + "px" }}>
       {singlePost.map((post) => (
         <div key={post.id} className="px-4 pt-6 pb-20">
-          <img src={post.postImage} alt={post.title+"'s image"} className="w-full h-[20rem] object-cover rounded-lg mb-4" />
+          <img
+            src={post.postImage}
+            alt={post.title + "'s image"}
+            className="w-full h-[20rem] object-cover rounded-lg mb-4"
+          />
           <h1 className="text-2xl font-semibold">{post.title}</h1>
           <p className="text-sm">
             Posted by {post.author}&nbsp;●&nbsp;{post["date-created"]}
@@ -26,7 +36,7 @@ const Post = ({ postID }) => {
               </Link>
             ))}
           </div>
-          <p className="mt-4">{ post.content }</p>
+          <p className="mt-4">{post.content}</p>
         </div>
       ))}
     </div>
