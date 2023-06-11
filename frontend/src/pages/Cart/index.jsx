@@ -22,7 +22,7 @@ const Cart = ({
   const { isDark, cartState } = useContext(AppContext);
   const { cartItems, deleteCartItem } = cartState;
 
-  const [isPending, setIsPending] = useState(true);
+  const [isPending, setIsPending] = useState(false);
   const [cartTotal, setCartTotal] = useState(0);
   const [deleteItem, setDeleteItem] = useState(false);
   const [deleted, setDeleted] = useState([]);
@@ -32,9 +32,9 @@ const Cart = ({
       window.scrollTo(0, 0);
       document.title = "Cart - Green Hybrid Empire";
 
-      setTimeout(() => {
+      /* setTimeout(() => {
         setIsPending(false);
-      }, 2000);
+      }, 2000);*/
     };
   }, []);
 
