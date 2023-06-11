@@ -98,7 +98,7 @@ const User = ({
       )}
 
       <main
-        className={`w-full px-6 ${isDark ? "bg-[#121212]" : "bg-white"} ${
+        className={`w-full pb-16 px-6 ${isDark ? "bg-[#121212]" : "bg-white"} ${
           screenWidth > 767 ? bodyMargin : ""
         } transition-all duration-300`}
         style={{ minHeight: screenHeight + "px" }}
