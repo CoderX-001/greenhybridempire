@@ -24,16 +24,16 @@ const Home = ({
 }) => {
   const { isDark } = useContext(AppContext);
 
-  const [isPending, setIsPending] = useState(true);
+  const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
     return () => {
       window.scrollTo(0, 0);
       document.title = "Green Hybrid Empire LTD";
 
-      setTimeout(() => {
+      /* setTimeout(() => {
         setIsPending(false);
-      }, 3000);
+      }, 3000);*/
     };
   }, []);
 
