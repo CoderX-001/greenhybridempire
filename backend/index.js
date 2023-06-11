@@ -13,6 +13,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const uri = process.env.MONGO_URi;
 
+console.log(uri)
+
 // Connect to database
 connectDB(uri);
 
