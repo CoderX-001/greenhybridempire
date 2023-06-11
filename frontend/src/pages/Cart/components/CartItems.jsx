@@ -11,6 +11,7 @@ const CartItem = ({
   category,
   price,
   orderFor,
+  itemsAvailable,
   deleteItem,
   setDeleted,
   deleted,
@@ -25,8 +26,31 @@ const CartItem = ({
   const incrementOrder = () => {
     const newCount = count + 1;
 
-    setCount(newCount);
-    updateItem(itemID, "orderFor", newCount);
+    if (newCount > 0 && newCount <= itemsAvailable) {
+      setCount(newCount);
+      updateItem(itemID, "orderFor", newCount);
+    }
+  };
+
+  const decrementOrder = () => {
+    const newCount = count - 1;
+
+    if (newCount >= 1) {
+      setCount(newCount);
+      updateItem(itemID, "orderFor", newCount);
+    }
+  };
+
+  const handleInputOrder = (e) => {
+    const newCount = e.target.value;
+
+    if (newCount > 0 && newCount <= itemsAvailable) {
+      setCount(newCount);
+      updateItem(itemID, "orderFor", newCount);
+    } else {
+      setCount(1);
+      updateItem(1);
+    }
   };
 
   const handleDelete = (e) => {
@@ -79,12 +103,12 @@ const CartItem = ({
             name="count"
             maxLength="2"
             className="w-3/4 bg-transparent text-center outline-none"
-            onChange={(e) => setCount(e.target.value)}
+            onChange={handleInputOrder}
             value={count}
           />
 
           {/* Minus button */}
-          <button className="p-1">
+          <button onClick={decrementOrder} className="p-1">
             <IconContext.Provider value={{ className: "text-lg" }}>
               <BiMinus />
             </IconContext.Provider>

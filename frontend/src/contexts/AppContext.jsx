@@ -17,13 +17,15 @@ const AppContextProvider = ({ children }) => {
     const cartProducts = JSON.parse(localStorage.getItem("cart"));
 
     cartProducts.map((cartProduct) => {
-      products.forEach((product) => {
+      products.forEach((product, index) => {
+        product.order = index;
         if (product.id === cartProduct) {
           array.push(product);
         }
       });
     });
   };
+  // console.log(cart)
   mapCartItem(cart);
 
   const [cartItems, setCartItems] = useState(cart);
@@ -74,7 +76,7 @@ const AppContextProvider = ({ children }) => {
     });
 
     const newArray = [...cartItems2, newCartItems[0]].sort((a, b) => {
-      return a.id - b.id;
+      return a.order - b.order;
     });
     setCartItems(newArray);
   };

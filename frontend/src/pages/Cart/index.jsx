@@ -129,6 +129,7 @@ const Cart = ({
                     cart["discount-price"] ? cart["discount-price"] : cart.price
                   }
                   orderFor={cart.orderFor}
+                  itemsAvailable={cart.itemsAvailable}
                   deleteItem={deleteItem}
                   setDeleted={setDeleted}
                   deleted={deleted}
