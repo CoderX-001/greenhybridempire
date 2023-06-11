@@ -41,7 +41,7 @@ const User = ({
 
   useEffect(() => {
     // Fetch the user's info from the DB
-    const url = `http://localhost:3173/api/v1/get/user?id=${id}`;
+    const url = `https://api-greenhybridempire.onrender.com/api/v1/get/user?id=${id}`;
     const accessToken =
       localStorage.getItem("user") !== null
         ? JSON.parse(localStorage.getItem("user")).accessToken
@@ -101,7 +101,7 @@ const User = ({
         className={`w-full px-6 ${isDark ? "bg-[#121212]" : "bg-white"} ${
           screenWidth > 767 ? bodyMargin : ""
         } transition-all duration-300`}
-        style={{ minHeight: screenHeight + "px" }}
+        style={{ minHeight: screenHeight + "px", paddingBottom: "5rem" }}
       >
         {screenWidth > 767 ? <TopNav /> : null}
 

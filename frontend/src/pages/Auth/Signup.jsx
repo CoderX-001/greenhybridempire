@@ -37,7 +37,7 @@ const Signup = ({
       const data = { name, email, password };
 
       axios
-        .post("http://localhost:3173/api/v1/auth/signup", data)
+        .post("https://api-greenhybridempire.onrender.com/api/v1/auth/signup", data)
         .then((response) => {
           const { setAuthState } = authStates;
 

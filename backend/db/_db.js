@@ -8,11 +8,12 @@ const connectDB = (uri) => {
     dbName: "greenhybridempire",
   };
 
+  mongoose.set('strictQuery', true)
   mongoose
     .connect(uri, options)
     .then(() => console.log("Database connected..."))
     .catch((err) => {
-      throw err;
+      console.log(err);
     });
 };
 
