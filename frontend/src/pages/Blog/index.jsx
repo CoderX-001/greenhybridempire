@@ -31,10 +31,10 @@ const Blogs = ({
       document.title = "Blog - Green Hybrid Empire";
 
       if (typeof authState.authenticated !== "undefined") {
-        setIsPending(true);
+        /* setIsPending(true);
         setTimeout(() => {
           setIsPending(false);
-        }, 3000);
+        }, 3000); */
       }
     };
   }, []);
