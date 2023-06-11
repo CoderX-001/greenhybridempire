@@ -101,7 +101,7 @@ const User = ({
         className={`w-full px-6 ${isDark ? "bg-[#121212]" : "bg-white"} ${
           screenWidth > 767 ? bodyMargin : ""
         } transition-all duration-300`}
-        style={{ minHeight: screenHeight + "px", paddingBottom: "4rem" }}
+        style={{ minHeight: screenHeight + "px", paddingBottom: "5rem" }}
       >
         {screenWidth > 767 ? <TopNav /> : null}
 
