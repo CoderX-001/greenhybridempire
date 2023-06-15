@@ -1133,6 +1133,10 @@ video {
   width:16rem;
 }
 
+.w-\[9rem\] {
+  width:9rem;
+}
+
 .max-w-\[20rem\] {
   max-width:20rem;
 }
@@ -1472,6 +1476,14 @@ video {
   background-color:#33b05f89;
 }
 
+.bg-\[\#33b05f46\] {
+  background-color:#33b05f46;
+}
+
+.bg-\[\#33b05f58\] {
+  background-color:#33b05f58;
+}
+
 .object-cover {
   -o-object-fit:cover;
      object-fit:cover;
@@ -1565,6 +1577,11 @@ video {
 .py-5 {
   padding-top:1.25rem;
   padding-bottom:1.25rem;
+}
+
+.px-12 {
+  padding-left:3rem;
+  padding-right:3rem;
 }
 
 .pb-20 {
@@ -1685,6 +1702,10 @@ video {
 
 .text-\[0\.7rem\] {
   font-size:0.7rem;
+}
+
+.text-\[0\.75rem\] {
+  font-size:0.75rem;
 }
 
 .font-bold {

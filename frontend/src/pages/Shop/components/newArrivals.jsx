@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick/lib/slider";
 import { ButtonWithIcon } from "../../../components/ui/buttons";
 import { BiCartAdd } from "react-icons/bi";
+import { priceComma } from "../../../functions/CartFuncs";
 
 const NewArrivals = () => {
   const { isDark } = useContext(AppContext);
@@ -55,17 +56,19 @@ const NewArrivals = () => {
               <img
                 src={item["item-image"]}
                 alt={item.name}
-                className="relative z-10 w-[15rem] mx-auto mt-6"
+                className={`relative z-10 w-[15rem] mx-auto mt-6 ${
+                  item.id === 7 && "w-[9rem]"
+                }`}
               />
               <div
                 className={`${
-                  isDark ? "bg-[#33b05f89]" : "bg-[#33b05f23]"
+                  isDark ? "bg-[#33b05f89]" : "bg-[#33b05f58]"
                 } w-32 h-32 rounded-full absolute -top-2 left-1/2 -translate-x-1/2`}
               ></div>
             </div>
 
             <div
-              className={`absolute bottom-3 w-full px-8 ${
+              className={`absolute bottom-3 w-full px-12 ${
                 isDark ? "text-secondary-gray" : "text-[#121212]"
               }`}
             >
@@ -76,18 +79,18 @@ const NewArrivals = () => {
                 {item.name}
               </h3>
 
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between">
                 {/* ITEM PRICE */}
                 <div className="flex items-center gap-x-3">
                   <p className="text-[0.9rem]">
                     ₦
                     {item["discount-price"]
-                      ? item["discount-price"]
-                      : item.price}
+                      ? priceComma(item["discount-price"])
+                      : priceComma(item.price)}
                   </p>
                   {item["discount-price"] ? (
-                    <p className="text-[0.9rem] text-red-500 line-through">
-                      ₦{item.price}
+                    <p className="text-[0.75rem] text-red-500 line-through">
+                      ₦{priceComma(item.price)}
                     </p>
                   ) : null}
                 </div>
