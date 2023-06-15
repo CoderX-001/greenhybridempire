@@ -100,7 +100,7 @@ const Shop = ({
               {/* Slider */}
               <Slider {...settings}>
                 {categories.map((item) => (
-                  <div key={item.name} className="w-56 h-44 py-6 px-4">
+                  <div key={item.name} className="w-56 h-44 py-6 px-6">
                     <div
                       className={`relative w-full h-full font-medium ${
                         item.color
@@ -127,7 +127,7 @@ const Shop = ({
                         className={`absolute ${
                           item.name.includes("-") ||
                           item.name.includes("Product")
-                            ? "-top-2 -right-6"
+                            ? "-top-8 -right-6"
                             : "bottom-0 -right-4"
                         } object-cover w-[8rem] h-[8rem]`}
                       />
