@@ -138,7 +138,7 @@ const Shop = ({
             </section>
 
             <section>
-              <h2 className="text-lg text-secondary-gray uppercase mt-6">
+              <h2 className="text-lg text-secondary-gray uppercase mt-0">
                 New Arrivals
               </h2>
               <div></div>
