@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { getAvailableScreenHeight } from "../../functions/functions";
 import { IconContext } from "react-icons";
 import { FaTimes } from "react-icons/fa";
@@ -8,7 +8,7 @@ import { BiSearch } from "react-icons/bi";
 import { AppContext } from "../../contexts/AppContext";
 
 export const SearchPopup = () => {
-  const { searchState } = useContext(AppContext);
+  const { isDark, searchState } = useContext(AppContext);
   const [screenHeight, setScreenHeight] = useState(getAvailableScreenHeight());
   window.addEventListener("resize", () =>
     setScreenHeight(getAvailableScreenHeight())
@@ -21,7 +21,9 @@ export const SearchPopup = () => {
   return (
     <div
       className={`blur-bg fixed z-[9999] top-0 left-0 ${
-        searchActive ? "w-full top-0 left-0 translate-x-0 translate-y-0 overflow-auto" : "w-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden"
+        searchActive
+          ? "w-full top-0 left-0 translate-x-0 translate-y-0 overflow-auto"
+          : "w-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden"
       } transition-all duration-200`}
       style={{
         height: searchActive ? screenHeight + "px" : 0,
@@ -35,7 +37,11 @@ export const SearchPopup = () => {
               setSearchText("");
               setSearchActive(false);
             }}
-            className="p-1 rounded-full active:bg-gray-200"
+            className={`p-1 rounded-full ${
+              isDark
+                ? "text-primary-gray active:bg-gray-400"
+                : "text-black active:bg-gray-200"
+            } `}
           >
             <IconContext.Provider value={{ className: "text-2xl lg:text-3xl" }}>
               <FaTimes />
@@ -43,7 +49,7 @@ export const SearchPopup = () => {
           </button>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 w-full mx-auto md:w-3/4">
           <form className="relative" onSubmit={(e) => e.preventDefault()}>
             <PrimaryInput
               type="text"

@@ -68,9 +68,9 @@ const CartItem = ({
 
   return (
     <div
-      className={`relative max-w-[30rem] px-4 py-3 rounded-lg mb-4 ${
+      className={`relative max-w-[30rem] mx-auto px-4 py-3 rounded-lg mb-4 ${
         isDark ? "bg-[#3e3e3e] text-primary-gray" : "bg-primary-gray text-black"
-      } flex items-center justify-between gap-x-3`}
+      } flex items-center justify-between gap-x-3 md:max-w-[35rem] md:mx-0`}
     >
       <div className="flex items-center gap-x-3">
         <img
@@ -119,16 +119,14 @@ const CartItem = ({
           <input
             type="checkbox"
             name={id}
-            className="deleteItem absolute w-full h-full opacity-0"
+            className="deleteItem absolute w-full h-full opacity-0 cursor-pointer"
             onChange={handleDelete}
           />
           <label
             htmlFor={id}
-            className={`w-6 h-6 bg-transparent border-[1px] border-secondary-gray rounded-full`}
+            className="w-6 h-6 bg-transparent border-[1px] border-secondary-gray rounded-full"
           >
-            <div
-              className={`w-full h-full bg-secondary-gray border-2 border-white rounded-full`}
-            ></div>
+            <div className="w-full h-full bg-secondary-gray border-2 border-white rounded-full"></div>
           </label>
         </div>
       )}

@@ -10,7 +10,7 @@ import { toastError, toastSuccess } from "../../hooks/useToast";
 import axios from "axios";
 import { IconContext } from "react-icons";
 import { BiLoaderAlt } from "react-icons/bi";
-// import {} from "react-event-injector"
+import Sunset from "../../assets/sunset.jpeg";
 
 const Login = ({
   screenWidth,
@@ -40,7 +40,11 @@ const Login = ({
       const data = { email, password };
 
       axios
-        .post("https://api-greenhybridempire.onrender.com/api/v1/auth/login", data)
+        .post(
+          // "https://api-greenhybridempire.onrender.com/api/v1/auth/login",
+          "http://localhost:3173/api/v1/auth/login",
+          data
+        )
         .then((response) => {
           const { role } = response.data.user;
           const { setAuthState } = authStates;
@@ -89,7 +93,7 @@ const Login = ({
       window.scrollTo(0, 0);
       document.title = "Login - Green Hybrid Empire";
     };
-  }, []);
+  }, [authStates, navigate]);
 
   useEffect(() => {
     setBackground(isDark ? "#121212" : "#f1f1f1");
@@ -105,14 +109,14 @@ const Login = ({
       )}
 
       <main
-        className={`w-full  overflow-hidden ${
+        className={`w-full overflow-hidden ${
           isDark ? "bg-[#121212]" : "bg-white"
         } ${screenWidth > 767 ? bodyMargin : ""} transition-all duration-300`}
-        style={{ height: screenHeight - 80 + "px" }}
+        style={{ minHeight: screenHeight - 80 + "px" }}
       >
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden items-center justify-between md:min-h-screen lg:pl-8 lg:flex">
           {/* form */}
-          <div className="relative mt-16 pb-8">
+          <div className="relative mt-16 pb-8 md:w-3/4 md:mx-auto md:mt-28 lg:w-[45%] lg:mt-0 lg:pb-0">
             <div className="w-fit mx-auto mb-10">
               <h1 className="text-2xl text-primary font-semibold">
                 Hi! Welcome back
@@ -178,6 +182,18 @@ const Login = ({
             </p>
           </div>
           {/* side image (for larger screens) */}
+          <div className="hidden h-screen w-[45%] lg:block">
+            <div
+              className="h-full w-full"
+              style={{
+                background: `linear-gradient(rgba(51, 177, 96, 1), rgba(51, 177, 96, 1)), url(${Sunset}) no-repeat`,
+                backgroundSize: "cover",
+                backgroundOrigin: "border-box",
+                backgroundPosition: "40% center",
+                backgroundBlendMode: "color",
+              }}
+            ></div>
+          </div>
         </div>
       </main>
     </div>

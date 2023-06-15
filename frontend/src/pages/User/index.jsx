@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Mobile, Navbar } from "../../components/navbar";
 import { AppContext } from "../../contexts/AppContext";
 import { TopNav } from "../../components/navbar/non-mobile";
@@ -42,6 +42,7 @@ const User = ({
   useEffect(() => {
     // Fetch the user's info from the DB
     const url = `https://api-greenhybridempire.onrender.com/api/v1/get/user?id=${id}`;
+    // const url = `http://localhost:3173/api/v1/get/user?id=${id}`;
     const accessToken =
       localStorage.getItem("user") !== null
         ? JSON.parse(localStorage.getItem("user")).accessToken
@@ -69,7 +70,7 @@ const User = ({
           toastError("Try reloading the page.");
         }
       });
-  }, []);
+  }, [id]);
 
   if (typeof authState.authenticated === "undefined") {
     const location = "/join/login";
@@ -122,7 +123,7 @@ const User = ({
 
           <div className="mb-16">
             {/* Name */}
-            <div className="relative w-full h-[3.7rem] border-2 rounded-md flex items-center px-4 mb-8">
+            <div className="relative w-full h-[3.7rem] border-2 rounded-md flex items-center px-4 mb-8 md:w-1/2">
               <p
                 className={`absolute -top-3 ${
                   isDark ? "bg-[#121212]" : "bg-white"
@@ -141,7 +142,7 @@ const User = ({
             </div>
 
             {/* Email */}
-            <div className="relative w-full h-[3.7rem] border-2 rounded-md flex items-center px-4 mb-8">
+            <div className="relative w-full h-[3.7rem] border-2 rounded-md flex items-center px-4 mb-8 md:w-1/2">
               <p
                 className={`absolute -top-3 ${
                   isDark ? "bg-[#121212]" : "bg-white"
@@ -160,7 +161,7 @@ const User = ({
             </div>
 
             {/* Phone number */}
-            <div className="relative w-full h-[3.7rem] border-2 rounded-md flex items-center px-4">
+            <div className="relative w-full h-[3.7rem] border-2 rounded-md flex items-center px-4 md:w-1/2">
               <p
                 className={`absolute -top-3 ${
                   isDark ? "bg-[#121212]" : "bg-white"

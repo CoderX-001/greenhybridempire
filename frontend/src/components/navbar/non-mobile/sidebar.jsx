@@ -6,26 +6,29 @@ import { BiHome, BiMoon, BiNews, BiSearch, BiSun } from "react-icons/bi";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { AppContext } from "../../../contexts/AppContext";
 
-const Sidebar = ({ navFunc, screenHeight }) => {
-  const { isDark, setIsDark } = useContext(AppContext)
-  const styleScoped = {
-    height: screenHeight,
-  };
-  
-  const [sideBar, setSideBar] = useState(false)
+const Sidebar = ({ navFunc }) => {
+  const { isDark, setIsDark, searchState, authStates } = useContext(AppContext);
+  const { authState } = authStates;
+  const { setSearchActive } = searchState;
+
+  const userID =
+    typeof authState.authenticated !== "undefined" ? authState.user.id : "";
+
+  const [sideBar, setSideBar] = useState(false);
 
   const updateNav = () => {
     navFunc(!sideBar);
     setSideBar(!sideBar);
-  }
+  };
 
   return (
     <aside
-      className={`${sideBar ? "w-[30%] px-6" : "w-20 flex flex-col items-center"} 
-      fixed z-[9999] top-0 left-0
-      ${isDark ? "bg-[#121212 ]" : "bg-white"} 
+      className={`${
+        sideBar ? "w-[30%] px-6" : "w-20 flex flex-col items-center"
+      } 
+      fixed z-[9999] top-0 left-0 min-h-screen
+      ${isDark ? "bg-[#121212]" : "bg-white"} 
       py-6 transition-[width,color] duration-300 drop-shadow-lg`}
-      style={styleScoped}
     >
       <Link to="/">
         <svg
@@ -83,7 +86,10 @@ const Sidebar = ({ navFunc, screenHeight }) => {
           {sideBar ? <span>Home</span> : null}
         </NavLink>
 
-        <div className="flex items-center gap-x-4 text-secondary-gray hover:text-[#5c5c5c] cursor-pointer">
+        <div
+          onClick={() => setSearchActive(true)}
+          className="flex items-center gap-x-4 text-secondary-gray hover:text-[#5c5c5c] cursor-pointer"
+        >
           <button className="w-fit" title="Search">
             <IconContext.Provider value={{ className: "text-2xl" }}>
               <BiSearch />
@@ -110,17 +116,31 @@ const Sidebar = ({ navFunc, screenHeight }) => {
           {sideBar ? <span>Blog</span> : null}
         </NavLink>
 
-        <NavLink
-          to="/join/login"
-          className="large w-fit flex items-center gap-x-4"
-        >
-          <div title="Login">
-            <IconContext.Provider value={{ className: "text-2xl" }}>
-              <AiOutlineUser />
-            </IconContext.Provider>
-          </div>
-          {sideBar ? <span>Login</span> : null}
-        </NavLink>
+        {typeof authState.authenticated === "undefined" ? (
+          <NavLink
+            to="/join/login"
+            className="large w-fit flex items-center gap-x-4"
+          >
+            <div title="Login">
+              <IconContext.Provider value={{ className: "text-2xl" }}>
+                <AiOutlineUser />
+              </IconContext.Provider>
+            </div>
+            {sideBar ? <span>Login</span> : null}
+          </NavLink>
+        ) : (
+          <NavLink
+            to={`/profile/${userID}`}
+            className="large profile w-fit flex items-center gap-x-4"
+          >
+            <div className="w-6 h-6 bg-transparent text-[#979ea4] border-2 border-[#979ea4] rounded-full relative">
+              <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-sm font-semibold">
+                E
+              </span>
+            </div>
+            {sideBar ? <span>Profile</span> : null}
+          </NavLink>
+        )}
       </div>
 
       <div className="flex flex-col items-start gap-y-6 absolute bottom-6">

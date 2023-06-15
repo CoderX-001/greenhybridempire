@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mobile, Navbar } from "../components/navbar";
 import { TopNav } from "../components/navbar/non-mobile";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 const InfoPage = ({
@@ -13,6 +13,12 @@ const InfoPage = ({
   location,
 }) => {
   const { isDark } = useContext(AppContext);
+
+  useEffect(() => {
+    return () => {
+      document.body.style.backgroundColor = isDark ? "#121212" : "#fff";
+    };
+  });
 
   return (
     <div className="flex flex-col overflow-hidden md:flex-row md:justify-center">

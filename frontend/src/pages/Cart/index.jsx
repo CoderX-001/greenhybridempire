@@ -77,12 +77,12 @@ const Cart = ({
       >
         {screenWidth > 767 ? <TopNav /> : null}
 
-        <div className="px-4 pt-6">
-          <div className="w-full flex items-center justify-between mb-6">
+        <div className="px-4 pt-6 h-screen md:px-16">
+          <div className="w-full flex items-center justify-between mb-6 md:max-w-[35rem]">
             <h1
               className={`${
                 isDark ? "text-primary-gray" : "text-black"
-              } text-xl`}
+              } text-xl font-medium md:text-2xl`}
             >
               Checkout
             </h1>
@@ -158,7 +158,7 @@ const Cart = ({
               <div
                 className={`w-full py-3 ${
                   isDark ? "bg-[#121212]" : "bg-white"
-                } flex items-center justify-between fixed bottom-12 left-0 px-4`}
+                } flex items-center justify-between fixed bottom-12 left-0 px-4 md:max-w-[30rem] md:left-auto md:mx-auto`}
               >
                 <div>
                   <p className="text-gray-500">Total price</p>

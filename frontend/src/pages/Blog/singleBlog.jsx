@@ -33,7 +33,7 @@ const SingleBlog = ({
         }, 3000);
       }
     };
-  }, []);
+  }, [authState.authenticated]);
 
   useEffect(() => {
     setBackground(isDark ? "#121212" : "#f1f1f1");

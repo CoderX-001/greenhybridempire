@@ -9,6 +9,7 @@ export const DefaultInput = ({
   style,
   onChange,
   value,
+  autoComplete,
 }) => {
   return (
     <input
@@ -18,6 +19,7 @@ export const DefaultInput = ({
       className={style}
       onChange={onChange}
       value={value}
+      autoComplete={autoComplete || "off"}
     />
   );
 };
@@ -57,11 +59,11 @@ export const PrimaryInput = ({
         type={type}
         name={name}
         placeholder={placeholder ? placeholder : ""}
-        className={`w-full 
+        className={`w-full bg-primary-gray
           ${
             isDark
-              ? "bg-[#3e3e3e] text-primary-gray"
-              : "bg-primary-gray text-black"
+              ? "bg-secondary-gray text-primary-gray placeholder:text-[#3e3e3e]"
+              : " text-black"
           } 
           ${typeof padding !== "undefined" ? padding : "py-3 px-4"} 
           drop-shadow-md outline-none rounded-md`}

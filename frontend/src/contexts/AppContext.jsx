@@ -5,9 +5,14 @@ export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
+
+  // SEARCH CONTEXT
   const [searchActive, setSearchActive] = useState(false);
   const [searchText, setSearchText] = useState("");
 
+  // END OF SEARCH CONTEXT
+
+  // CART CONTEXT
   localStorage.setItem("cart", JSON.stringify([1, 2, 3]));
 
   const cart = [];
@@ -25,10 +30,28 @@ const AppContextProvider = ({ children }) => {
       });
     });
   };
-  // console.log(cart)
   mapCartItem(cart);
 
+  // Cart states
   const [cartItems, setCartItems] = useState(cart);
+
+  // Function to update cart item
+  const updateItem = (id, option, newValue) => {
+    const newCartItems = cartItems.filter((item) => {
+      return item.id === id;
+    });
+    const update = { ...newCartItems }[0];
+    update[option] = newValue;
+
+    const cartItems2 = cartItems.filter((newItem) => {
+      return newItem.id !== id;
+    });
+
+    const newArray = [...cartItems2, newCartItems[0]].sort((a, b) => {
+      return a.order - b.order;
+    });
+    setCartItems(newArray);
+  };
 
   // Function to remove items from cart
   const deleteCartItem = (items) => {
@@ -60,35 +83,10 @@ const AppContextProvider = ({ children }) => {
     }
   };
 
+  // END OF CART CONTEXT
+
+  // AUTHENTICATIN CONTEXT
   const [authState, setAuthState] = useState({});
-
-  // Function to update cart item
-  const updateItem = (id, option, newValue) => {
-    const newCartItems = cartItems.filter((item) => {
-      return item.id === id;
-    });
-    const update = { ...newCartItems }[0];
-    console.log(update);
-    update[option] = newValue;
-
-    const cartItems2 = cartItems.filter((newItem) => {
-      return newItem.id !== id;
-    });
-
-    const newArray = [...cartItems2, newCartItems[0]].sort((a, b) => {
-      return a.order - b.order;
-    });
-    setCartItems(newArray);
-  };
-
-  const cartState = { cartItems, setCartItems, updateItem, deleteCartItem };
-  const searchState = {
-    searchText,
-    setSearchText,
-    searchActive,
-    setSearchActive,
-  };
-  const authStates = { authState, setAuthState };
 
   if (
     typeof authState.authenticated === "undefined" &&
@@ -105,6 +103,18 @@ const AppContextProvider = ({ children }) => {
 
     setAuthState(authStateUser);
   }
+
+  // END OF AUTHENTICATION CONTEXT
+
+  // STATE CATEGORY
+  const cartState = { cartItems, setCartItems, updateItem, deleteCartItem };
+  const searchState = {
+    searchText,
+    setSearchText,
+    searchActive,
+    setSearchActive,
+  };
+  const authStates = { authState, setAuthState };
 
   return (
     <AppContext.Provider

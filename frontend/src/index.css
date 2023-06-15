@@ -51,8 +51,16 @@ input[type=search]::-webkit-search-cancel-button {display:none;}
 }
 
 .active[aria-current=page].large{color:#33b160;}
+a.active[aria-current=page].large.profile > div{
+  border-color:#33b160;
+  color:#33b160;
+}
 a.large:not([aria-current=page]){color:#979ea4;}
 a.large:not([aria-current=page]):hover{color:#5c5c5c;}
+a.large.profile:not([aria-current=page]):hover > div{
+  border-color:#5c5c5c;
+  color:#5c5c5c;
+}
 
 .blob {
   border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;

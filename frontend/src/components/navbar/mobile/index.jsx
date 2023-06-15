@@ -1,17 +1,19 @@
 import { IconContext } from "react-icons";
-import { AiOutlineBell, AiOutlineShopping } from "react-icons/ai";
-import { HiMenuAlt1 } from "react-icons/hi";
-import { HiMoon, HiSun } from "react-icons/hi";
+import { AiOutlineBell } from "react-icons/ai";
+import { HiMenuAlt1, HiMoon } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import BottomNav from "./bottomNav";
 import Sidebar from "./sidebar";
 import { useContext, useState } from "react";
 import { AppContext } from "../../../contexts/AppContext";
 import { SearchPopup } from "../../ui/Popups";
+import { BiCartAlt, BiSun } from "react-icons/bi";
 
-const Mobile = ({options}) => {
+const Mobile = ({ options }) => {
   const [sideBarActive, setSideBarActive] = useState(false);
-  const { isDark, setIsDark } = useContext(AppContext);
+  const { isDark, setIsDark, cartState } = useContext(AppContext);
+
+  const { cartItems } = cartState;
 
   return (
     <>
@@ -81,44 +83,46 @@ const Mobile = ({options}) => {
         </div>
 
         <div className="flex items-center gap-x-4">
-          {
-            typeof options === "undefined" || options === true ? (
-              <div className="flex items-center gap-x-4">
-                <Link
-                  to="/notifications"
-                  className={`relative ${isDark ? "text-primary" : "text-black"}`}
-                >
-                  <IconContext.Provider value={{ className: "text-2xl" }}>
-                    <AiOutlineBell />
-                  </IconContext.Provider>
+          {typeof options === "undefined" || options === true ? (
+            <div className="flex items-center gap-x-4">
+              <Link
+                to="/notifications"
+                className={`relative ${isDark ? "text-primary" : "text-black"}`}
+              >
+                <IconContext.Provider value={{ className: "text-2xl" }}>
+                  <AiOutlineBell />
+                </IconContext.Provider>
 
-                  {/* {sideBarActive ? (
+                {/* {sideBarActive ? (
                     <div className="w-[5px] h-[5px] bg-red-500 rounded-full absolute top-[-2px] right-[-2px]"></div>
                   ) : null} */}
-                </Link>
+              </Link>
 
-                <Link
-                  to="/cart"
-                  className={`relative ${isDark ? "text-primary" : "text-black"}`}
-                >
-                  <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
-                    <AiOutlineShopping />
-                  </IconContext.Provider>
+              <Link
+                to="/cart"
+                className={`relative ${isDark ? "text-primary" : "text-black"}`}
+              >
+                <IconContext.Provider value={{ className: "text-[1.6rem]" }}>
+                  <BiCartAlt />
+                </IconContext.Provider>
 
-                  {/* {sideBarActive ? (
-                    <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
-                  ) : null} */}
-                </Link>
-              </div>
-            ) : null
-          }
+                {cartItems.length > 0 ? (
+                  <div className="w-[5px] h-[5px] bg-primary rounded-full absolute top-[-2px] right-[-2px]"></div>
+                ) : null}
+              </Link>
+            </div>
+          ) : null}
 
           <button
             onClick={() => setIsDark(!isDark)}
-            className={`relative ${isDark ? "text-secondary" :"text-secondary-gray -scale-x-100 active:text-[#121212]"} flex items-center gap-x-2`}
+            className={`relative ${
+              isDark
+                ? "text-secondary"
+                : "text-secondary-gray -scale-x-100 active:text-[#121212]"
+            } flex items-center gap-x-2`}
           >
             <IconContext.Provider value={{ className: "text-2xl" }}>
-              {isDark ? <HiSun /> : <HiMoon />}
+              {isDark ? <BiSun /> : <HiMoon />}
             </IconContext.Provider>
           </button>
         </div>

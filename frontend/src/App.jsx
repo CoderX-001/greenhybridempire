@@ -7,6 +7,7 @@ import {
   Cart,
   Home,
   Login,
+  Shop,
   Signup,
   SingleBlog,
   User,
@@ -53,6 +54,20 @@ const App = () => {
                 getNavbarActive={getNavbarActive}
                 setBodyMargin={setBodyMargin}
                 setBackground={setBackground}
+              />
+            }
+          />
+
+          {/* SHOP PAGE */}
+          <Route
+            path="/shop"
+            element={
+              <Shop
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
               />
             }
           />
@@ -150,7 +165,18 @@ const App = () => {
           <Route path="/admin" element={<Admin />} />
 
           {/* 404 PAGE */}
-          <Route path="*" element={<ErrorPage />} />
+          <Route
+            path="*"
+            element={
+              <ErrorPage
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
+              />
+            }
+          />
         </Routes>
       </AppContextProvider>
     </div>

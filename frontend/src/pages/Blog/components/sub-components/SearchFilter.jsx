@@ -10,7 +10,6 @@ const SearchFilter = ({ mainState, stateFunc, secStateFunc, bodyFunc, value, val
     let result;
     state ? (result = true) : (result = false);
 
-    console.log(result);
     return result;
   };
 
