@@ -5,18 +5,19 @@ import {
   Admin,
   Blogs,
   Cart,
+  ErrorPage,
   Home,
   Login,
   Shop,
   Signup,
   SingleBlog,
+  SingleItem,
   User,
 } from "./pages";
 import {
   getAvailableScreenHeight,
   getAvailableScreenWidth,
 } from "./functions/functions";
-import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   const [screenWidth, setScreenWidth] = useState(getAvailableScreenWidth());
@@ -60,9 +61,24 @@ const App = () => {
 
           {/* SHOP PAGE */}
           <Route
+            exact
             path="/shop"
             element={
               <Shop
+                screenWidth={screenWidth}
+                screenHeight={screenHeight}
+                bodyWidth={bodyWidth}
+                bodyMargin={bodyMargin}
+                getNavbarActive={getNavbarActive}
+              />
+            }
+          />
+
+          {/* SINGLE SHOP-ITEM PAGE */}
+          <Route
+            path="/shop/:id"
+            element={
+              <SingleItem
                 screenWidth={screenWidth}
                 screenHeight={screenHeight}
                 bodyWidth={bodyWidth}
@@ -104,6 +120,7 @@ const App = () => {
 
           {/* "ALL BLOGS" PAGE */}
           <Route
+            exact
             path="/blog"
             element={
               <Blogs

@@ -5,9 +5,10 @@ import { AppContext } from "../../contexts/AppContext";
 import { DefaultInput } from "../../components/form/Inputs";
 import { ButtonWithIcon } from "../../components/ui/buttons";
 import { BiSearch } from "react-icons/bi";
-import Slider from "react-slick";
 import { categories } from "../../data/_data";
 import { Link } from "react-router-dom";
+import NewArrivals from "./components/newArrivals";
+import Slider from "react-slick/lib/slider";
 
 const Shop = ({
   screenWidth,
@@ -103,7 +104,7 @@ const Shop = ({
                 {categories.map((item) => (
                   <div key={item.name} className="w-56 h-44 py-6 px-1">
                     <Link
-                      to="/"
+                      to={`/shop/${item.name.toLowerCase()}`}
                       className={`relative block w-full h-full font-medium ${
                         item.color
                       } ${
@@ -139,12 +140,7 @@ const Shop = ({
               </Slider>
             </section>
 
-            <section>
-              <h2 className="text-lg text-secondary-gray uppercase mt-2">
-                New Arrivals
-              </h2>
-              <div></div>
-            </section>
+            <NewArrivals />
           </div>
         </div>
       </main>

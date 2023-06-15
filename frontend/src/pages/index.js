@@ -7,3 +7,5 @@ export { default as Cart } from "./Cart/index";
 export { default as Admin } from "./Admin/index";
 export { default as User } from "./User/index";
 export { default as Shop } from "./Shop/index";
+export { default as SingleItem } from "./Shop/SingleItem";
+export { default as ErrorPage } from "./ErrorPage";
