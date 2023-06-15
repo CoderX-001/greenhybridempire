@@ -35,7 +35,7 @@ const Shop = ({
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
         },
@@ -100,7 +100,7 @@ const Shop = ({
               {/* Slider */}
               <Slider {...settings}>
                 {categories.map((item) => (
-                  <div key={item.name} className="w-56 h-44 py-6 px-6">
+                  <div key={item.name} className="w-56 h-44 py-6 px-1">
                     <div
                       className={`relative w-full h-full font-medium ${
                         item.color
@@ -111,12 +111,12 @@ const Shop = ({
                       } rounded-lg shadow px-2 overflow-hidden`}
                     >
                       <h3
-                        className={`absolute z-10 ${
+                        className={`absolute z-10 text-[0.85rem] ${
                           item.name === "books" ||
                           item.name === "Seedlings" ||
                           item.name === "Seeds"
-                            ? "top-2"
-                            : "bottom-2"
+                            ? "top-3"
+                            : "bottom-3"
                         }`}
                       >
                         {item.name.toUpperCase()}
