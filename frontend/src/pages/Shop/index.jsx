@@ -7,6 +7,7 @@ import { ButtonWithIcon } from "../../components/ui/buttons";
 import { BiSearch } from "react-icons/bi";
 import Slider from "react-slick";
 import { categories } from "../../data/_data";
+import { Link } from "react-router-dom";
 
 const Shop = ({
   screenWidth,
@@ -101,8 +102,9 @@ const Shop = ({
               <Slider {...settings}>
                 {categories.map((item) => (
                   <div key={item.name} className="w-56 h-44 py-6 px-1">
-                    <div
-                      className={`relative w-full h-full font-medium ${
+                    <Link
+                      to="/"
+                      className={`relative block w-full h-full font-medium ${
                         item.color
                       } ${
                         item.name === "Seedlings" || isDark
@@ -131,14 +133,14 @@ const Shop = ({
                             : "bottom-0 -right-4"
                         } object-cover w-[8rem] h-[8rem]`}
                       />
-                    </div>
+                    </Link>
                   </div>
                 ))}
               </Slider>
             </section>
 
             <section>
-              <h2 className="text-lg text-secondary-gray uppercase mt-0">
+              <h2 className="text-lg text-secondary-gray uppercase mt-2">
                 New Arrivals
               </h2>
               <div></div>
