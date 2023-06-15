@@ -69,7 +69,7 @@ const Shop = ({
 
         <div className="px-4">
           {/* SEARCH */}
-          <div className="mt-4 mb-6 relative">
+          <div className="mt-4 mb-10 relative">
             <DefaultInput
               placeholder="Search Shop..."
               name="searchShop"
@@ -92,6 +92,7 @@ const Shop = ({
 
           {/* MAIN */}
           <div>
+            {/* Categories */}
             <section>
               <h2 className="text-lg text-secondary-gray uppercase">
                 Categories
@@ -99,7 +100,7 @@ const Shop = ({
               {/* Slider */}
               <Slider {...settings}>
                 {categories.map((item) => (
-                  <div key={item.name} className="w-56 h-44 p-4">
+                  <div key={item.name} className="w-56 h-44 py-6 px-4">
                     <div
                       className={`relative w-full h-full font-medium ${
                         item.color
@@ -109,7 +110,7 @@ const Shop = ({
                           : "text-white"
                       } rounded-lg shadow px-2 overflow-hidden`}
                     >
-                      <h1
+                      <h3
                         className={`absolute z-10 ${
                           item.name === "books" ||
                           item.name === "Seedlings" ||
@@ -119,7 +120,7 @@ const Shop = ({
                         }`}
                       >
                         {item.name.toUpperCase()}
-                      </h1>
+                      </h3>
                       <img
                         src={item.image}
                         alt={item.name + "'s image"}
@@ -134,6 +135,13 @@ const Shop = ({
                   </div>
                 ))}
               </Slider>
+            </section>
+
+            <section>
+              <h2 className="text-lg text-secondary-gray uppercase mt-10">
+                New Arrivals
+              </h2>
+              <div></div>
             </section>
           </div>
         </div>
