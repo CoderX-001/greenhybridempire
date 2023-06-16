@@ -162,7 +162,7 @@ const Shop = ({
             />
 
             <section
-              className={`w-full h-[50vh] mt-16 rounded-md px-4 py-3 mb-20 grid place-content-center ${
+              className={`w-full h-[50vh] mt-16 rounded-md px-6 py-3 mb-20 grid place-content-center ${
                 isDark ? "text-secondary-gray" : "text-white"
               }`}
               style={{
@@ -172,7 +172,7 @@ const Shop = ({
               }}
             >
               <p className="uppercase text-[0.75rem] -mb-1">consultation</p>
-              <h1 className="uppercase text-2xl font-medium mb-6">
+              <h1 className="uppercase text-3xl font-medium mb-6">
                 How to run an oil palm plantation
               </h1>
 
