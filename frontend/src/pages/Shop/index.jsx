@@ -113,9 +113,7 @@ const Shop = ({
                       className={`relative block w-full h-full font-medium ${
                         item.color
                       } ${
-                        item.name === "Seedlings" || isDark
-                          ? "text-black"
-                          : "text-white"
+                        item.name === "Seedlings" ? "text-black" : "text-white"
                       } rounded-lg shadow px-2 overflow-hidden`}
                     >
                       <h3
