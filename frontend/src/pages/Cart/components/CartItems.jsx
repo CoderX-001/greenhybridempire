@@ -76,7 +76,7 @@ const CartItem = ({
         <img
           src={image}
           alt="testImage image"
-          className="w-12 h-12 rounded-full object-cover"
+          className="w-12 h-12 rounded-full object-cover drop-shadow-xl"
         />
         <div className="w-1/2">
           <h2 className="font-medium text-ellipsis overflow-hidden whitespace-nowrap">

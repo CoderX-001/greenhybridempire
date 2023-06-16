@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Mobile, Navbar } from "../../components/navbar";
 import { TopNav } from "../../components/navbar/non-mobile";
 import { AppContext } from "../../contexts/AppContext";
@@ -9,6 +9,9 @@ import { categories } from "../../data/_data";
 import { Link } from "react-router-dom";
 import NewArrivals from "./components/newArrivals";
 import Slider from "react-slick/lib/slider";
+import ItemsShop from "./components/itemsShop";
+import { products } from "../../utils/dummyProductData";
+import { AiOutlineWhatsApp } from "react-icons/ai";
 
 const Shop = ({
   screenWidth,
@@ -44,6 +47,8 @@ const Shop = ({
       },
     ],
   };
+
+  const [mainData, setMainData] = useState(products);
 
   useEffect(() => {
     document.title = "Shop - Green Hybrid Empire";
@@ -140,7 +145,50 @@ const Shop = ({
               </Slider>
             </section>
 
-            <NewArrivals />
+            <NewArrivals screenWidth={screenWidth} />
+
+            <ItemsShop
+              title="books"
+              data={mainData.filter((item) => {
+                return item.category === "Book";
+              })}
+            />
+
+            <ItemsShop
+              title="farm input"
+              data={mainData.filter((item) => {
+                return item.category === "Farm-input";
+              })}
+            />
+
+            <section
+              className={`w-full h-[50vh] mt-16 rounded-md px-4 py-3 mb-20 grid place-content-center ${
+                isDark ? "text-secondary-gray" : "text-white"
+              }`}
+              style={{
+                background:
+                  "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://img.freepik.com/free-photo/portrait-attractive-cuban-woman-presenting-statistical-information-her-unrecognizable-boss_1098-20618.jpg?w=740&t=st=1686901232~exp=1686901832~hmac=43ae74b8249e9eef3b8a790dd93840cb25c38fea6bdde8302d8f02f62cbc5da8') no-repeat",
+                backgroundSize: "cover",
+              }}
+            >
+              <p className="uppercase text-[0.75rem] -mb-1">consultation</p>
+              <h1 className="uppercase text-2xl font-medium mb-6">
+                How to run an oil palm plantation
+              </h1>
+
+              <p className="text-[0.75rem] mb-2">For more inquires</p>
+              <ButtonWithIcon
+                backgroundColor="bg-dark-green"
+                textColor="text-secondary"
+                icon={<AiOutlineWhatsApp />}
+                iconSize="text-xl"
+                padding="px-2 py-1.5"
+                borderRadius="rounded-lg"
+                miscStyle="w-fit flex items-center gap-x-2"
+                link="https://api.whatsapp.com/send?phone=08141156233&text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20oil%20palm%20plantation%20consultancy."
+                target="_blank"
+              />
+            </section>
           </div>
         </div>
       </main>

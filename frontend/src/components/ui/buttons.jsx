@@ -51,12 +51,15 @@ export const ButtonWithIcon = ({
   padding,
   borderRadius,
   miscStyle,
+  textStyle,
+  target,
 }) => {
   return (
     <>
       {typeof link !== "undefined" ? (
         <Link
           to={link}
+          target={typeof target === "undefined" ? "_self" : target}
           className={`${
             typeof buttonStyle !== "undefined" ? buttonStyle : ""
           } ${typeof backgroundColor !== "undefined" ? backgroundColor : ""}  ${
@@ -65,7 +68,9 @@ export const ButtonWithIcon = ({
             typeof borderRadius !== "undefined" ? borderRadius : ""
           } ${typeof miscStyle !== "undefined" ? miscStyle : ""}`}
         >
-          {typeof text !== "undefined" ? <p>{text}</p> : null}
+          {typeof text !== "undefined" ? (
+            <p className={textStyle}>{text}</p>
+          ) : null}
           {typeof icon !== "undefined" ? (
             <IconContext.Provider value={{ className: iconSize }}>
               {icon}
@@ -87,7 +92,7 @@ export const ButtonWithIcon = ({
           `}
         >
           {typeof text !== "undefined" ? (
-            <p className="text-lg">{text}</p>
+            <p className={textStyle}>{text}</p>
           ) : null}
           {typeof icon !== "undefined" ? (
             <IconContext.Provider value={{ className: iconSize }}>
