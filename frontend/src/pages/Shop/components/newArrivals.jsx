@@ -75,7 +75,7 @@ const NewArrivals = ({ screenWidth }) => {
 
               <div
                 className={`absolute bottom-5 w-full px-12 ${
-                  isDark ? "text-secondary-gray" : "text-[#121212]"
+                  isDark ? "text-white" : "text-[#121212]"
                 }`}
               >
                 {/* ITEM NAME */}
