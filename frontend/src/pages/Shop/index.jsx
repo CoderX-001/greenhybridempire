@@ -109,7 +109,7 @@ const Shop = ({
                 {categories.map((item) => (
                   <div key={item.name} className="w-56 h-44 py-6 px-1">
                     <Link
-                      to={`/shop/${item.name.toLowerCase()}`}
+                      to={`/shop/${item.name.replace(" ", "-").toLowerCase()}`}
                       className={`relative block w-full h-full font-medium ${
                         item.color
                       } ${
@@ -162,9 +162,7 @@ const Shop = ({
             />
 
             <section
-              className={`w-full h-[50vh] mt-16 rounded-md px-6 py-3 mb-20 grid place-content-center ${
-                isDark ? "text-secondary-gray" : "text-white"
-              }`}
+              className="w-full h-[50vh] mt-16 rounded-md px-4 py-3 mb-20 grid place-content-center text-white"
               style={{
                 background:
                   "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://img.freepik.com/free-photo/portrait-attractive-cuban-woman-presenting-statistical-information-her-unrecognizable-boss_1098-20618.jpg?w=740&t=st=1686901232~exp=1686901832~hmac=43ae74b8249e9eef3b8a790dd93840cb25c38fea6bdde8302d8f02f62cbc5da8') no-repeat",
