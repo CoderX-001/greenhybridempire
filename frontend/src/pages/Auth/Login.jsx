@@ -42,8 +42,8 @@ const Login = ({
       axios
         .post(
           "https://api-greenhybridempire.onrender.com/api/v1/auth/login",
-          /* "http://localhost:3173/api/v1/auth/login",
-          data */
+          /* "http://localhost:3173/api/v1/auth/login",*/
+          data
         )
         .then((response) => {
           const { role } = response.data.user;
