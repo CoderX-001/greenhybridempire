@@ -12,12 +12,36 @@ const NewArrivals = ({ screenWidth }) => {
 
   const settings = {
     infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 2,
     arrows: false,
     responsive: [
       {
-        breakpoint: 600,
+        breakpoint: 1536,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          pauseOnHover: true,
+          cssEase: "linear",
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          pauseOnHover: true,
+          cssEase: "linear",
+        },
+      },
+      {
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -29,7 +53,7 @@ const NewArrivals = ({ screenWidth }) => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -50,68 +74,69 @@ const NewArrivals = ({ screenWidth }) => {
       </h2>
       <Slider {...settings}>
         {newArrivals.map((item) => (
-          <div
-            key={item.id}
-            className={`w-32 h-[18rem] bg-[#33b05f56] rounded-lg shadow-lg overflow-hidden pb-5 ${
-              screenWidth > 480 ? "p-4" : "p-0"
-            }`}
-          >
-            <div className="relative w-full h-full">
-              {/* ITEM IMAGE */}
-              <div className="relative">
-                <img
-                  src={item["item-image"]}
-                  alt={item.name}
-                  className={`relative z-10 w-[15rem] mx-auto mt-6 ${
-                    item.id === 7 && "w-[9rem]"
-                  }`}
-                />
-                <div
-                  className={`${
-                    isDark ? "bg-[#33b05f89]" : "bg-[#33b05f58]"
-                  } w-32 h-32 rounded-full absolute -top-2 left-1/2 -translate-x-1/2`}
-                ></div>
-              </div>
-
-              <div
-                className={`absolute bottom-5 w-full px-12 ${
-                  isDark ? "text-white" : "text-[#121212]"
-                }`}
-              >
-                {/* ITEM NAME */}
-                <Link
-                  to={`/shop/${item.id}`}
-                  className={`block text-[0.9rem] overflow-hidden text-ellipsis whitespace-nowrap mb-2`}
-                >
-                  {item.name}
-                </Link>
-
-                <div className="flex flex-wrap items-center justify-between">
-                  {/* ITEM PRICE */}
-                  <div className="flex items-center gap-x-3">
-                    <p className="text-[0.9rem]">
-                      ₦
-                      {item["discount-price"]
-                        ? priceComma(item["discount-price"])
-                        : priceComma(item.price)}
-                    </p>
-                    {item["discount-price"] ? (
-                      <p className="text-[0.75rem] text-red-500 line-through">
-                        ₦{priceComma(item.price)}
-                      </p>
-                    ) : null}
-                  </div>
-
-                  {/* ADD-TO-CART BUTTON */}
-                  <ButtonWithIcon
-                    backgroundColor="bg-dark-green"
-                    borderRadius="rounded-lg"
-                    func={() => {}}
-                    icon={<BiCartAdd />}
-                    iconSize="text-xl"
-                    padding="px-3 py-2"
-                    textColor="text-secondary"
+          <div key={item.id} className="w-full py-4 px-2">
+            <div
+              className={`w-full h-[18rem] bg-[#33b05f56] rounded-lg shadow-lg overflow-hidden pb-5 ${
+                screenWidth > 480 ? "py-4 px-1" : "p-0"
+              }`}
+            >
+              <div className="relative w-full h-full">
+                {/* ITEM IMAGE */}
+                <div className="relative">
+                  <img
+                    src={item["item-image"]}
+                    alt={item.name}
+                    className={`relative z-10 w-[15rem] mx-auto mt-6 ${
+                      item.id === 7 && "w-[9rem]"
+                    }`}
                   />
+                  <div
+                    className={`${
+                      isDark ? "bg-[#33b05f89]" : "bg-[#33b05f58]"
+                    } w-32 h-32 rounded-full absolute -top-2 left-1/2 -translate-x-1/2`}
+                  ></div>
+                </div>
+
+                <div
+                  className={`absolute bottom-5 w-full ${
+                    screenWidth > 480 ? "px-4" : "px-12"
+                  } ${isDark ? "text-white" : "text-[#121212]"}`}
+                >
+                  {/* ITEM NAME */}
+                  <Link
+                    to={`/shop/${item.id}`}
+                    className={`block text-[0.9rem] overflow-hidden text-ellipsis whitespace-nowrap mb-2`}
+                  >
+                    {item.name}
+                  </Link>
+
+                  <div className="flex flex-wrap items-center justify-between">
+                    {/* ITEM PRICE */}
+                    <div className="flex items-center gap-x-3">
+                      <p className="text-[0.9rem]">
+                        ₦
+                        {item["discount-price"]
+                          ? priceComma(item["discount-price"])
+                          : priceComma(item.price)}
+                      </p>
+                      {item["discount-price"] ? (
+                        <p className="text-[0.75rem] text-red-500 line-through">
+                          ₦{priceComma(item.price)}
+                        </p>
+                      ) : null}
+                    </div>
+
+                    {/* ADD-TO-CART BUTTON */}
+                    <ButtonWithIcon
+                      backgroundColor="bg-dark-green"
+                      borderRadius="rounded-lg"
+                      func={() => {}}
+                      icon={<BiCartAdd />}
+                      iconSize="text-xl"
+                      padding="px-3 py-2"
+                      textColor="text-secondary"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

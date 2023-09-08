@@ -77,7 +77,7 @@ const Cart = ({
       >
         {screenWidth > 767 ? <TopNav /> : null}
 
-        <div className="px-4 pt-6 h-screen md:px-16">
+        <div className="mx-auto w-fit px-4 pt-6 h-screen md:px-16">
           <div className="w-full flex items-center justify-between mb-6 md:max-w-[35rem]">
             <h1
               className={`${

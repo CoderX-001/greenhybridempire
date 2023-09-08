@@ -13,13 +13,13 @@ const BlogItem = ({ post }) => {
     >
       <img
         src={post.postImage}
-        alt={post.title.substr(0, 17).trim() + "... image"}
+        alt={post.title + "'s image"}
         className="w-full h-[9rem] object-cover mb-2"
       />
 
       {/* Content */}
       <div className="px-2">
-        <p className="text-sm mb-1">
+        <p className="text-[0.75rem] mb-1">
           {post.author}&nbsp;●&nbsp;{post["date-created"]}
         </p>
 
@@ -28,7 +28,7 @@ const BlogItem = ({ post }) => {
           to={`/blog/${post.id}`}
           className={`block w-full ${
             isDark ? "text-primary" : "text-black"
-          } font-medium overflow-hidden text-ellipsis whitespace-nowrap`}
+          } font-semibold overflow-hidden text-ellipsis whitespace-nowrap`}
         >
           {post.title}
         </Link>
@@ -41,7 +41,7 @@ const BlogItem = ({ post }) => {
           <Link
             to={`/blog/search/${category}`}
             key={category}
-            className="text-sm border-[1px] border-primary px-1 rounded"
+            className="text-[0.7rem] border-[1px] border-primary px-1 rounded"
           >
             {category}
           </Link>

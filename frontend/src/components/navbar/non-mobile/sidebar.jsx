@@ -26,7 +26,7 @@ const Sidebar = ({ navFunc }) => {
       className={`${
         sideBar ? "w-[30%] px-6" : "w-20 flex flex-col items-center"
       } 
-      fixed z-[9999] top-0 left-0 min-h-screen
+      fixed z-[9999] top-0 left-0 h-screen
       ${isDark ? "bg-[#121212]" : "bg-white"} 
       py-6 transition-[width,color] duration-300 drop-shadow-lg`}
     >

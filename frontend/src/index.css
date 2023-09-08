@@ -2,7 +2,7 @@
   font-family:"Rubik", sans-serif;
   scroll-behavior:smooth;
   -webkit-tap-highlight-color:transparent;
-  /* #54712c */
+  overflow-x:hidden;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -17,6 +17,15 @@ const ItemsShop = ({ title, data }) => {
     arrows: true,
     responsive: [
       {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: false,
+          loop: true,
+        },
+      },
+      {
         breakpoint: 600,
         settings: {
           slidesToShow: 3,
@@ -40,51 +49,56 @@ const ItemsShop = ({ title, data }) => {
     <div className={`mt-12 ${isDark ? "text-secondary-gray" : "text-black"}`}>
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-secondary-gray uppercase">{title}</h2>
-        <Link to={`/shop/${title}`} className="text-sm hover:underline">
+        <Link
+          to={`/shop/${title.replace(" ", "-")}`}
+          className="text-sm hover:underline"
+        >
           View all
         </Link>
       </div>
       <Slider {...settings}>
         {data.map((item) => (
-          <div key={item.id} className="relative w-48 h-52 p-4">
-            <img
-              src={item["item-image"]}
-              alt=""
-              className="w-24 h-24 mx-auto object-cover bg-[#33b05f89] rounded-full drop-shadow-2xl"
-            />
-            <Link
-              to=""
-              className="block mt-3 text-[0.9rem] font-medium text-ellipsis overflow-hidden whitespace-nowrap"
-            >
-              {item.name}
-            </Link>
-            <div className="flex flex-col gap-y-2">
-              {/* ITEM PRICE */}
-              <div className="flex items-center gap-x-3">
-                <p className="text-[0.8rem]">
-                  ₦
-                  {item["discount-price"]
-                    ? priceComma(item["discount-price"])
-                    : priceComma(item.price)}
-                </p>
-                {item["discount-price"] ? (
-                  <p className="text-[0.75rem] text-red-500 line-through">
-                    ₦{priceComma(item.price)}
-                  </p>
-                ) : null}
-              </div>
-
-              {/* ADD-TO-CART BUTTON */}
-              <ButtonWithIcon
-                backgroundColor="bg-dark-green"
-                borderRadius="rounded-lg"
-                func={() => {}}
-                icon={<BiCartAdd />}
-                iconSize="text-lg"
-                padding="px-2 py-1.5"
-                textColor="text-secondary"
-                miscStyle="w-fit absolute bottom-2 right-4"
+          <div key={item.id} className="w-full md:px-3">
+            <div className="relative w-full h-52 p-4">
+              <img
+                src={item["item-image"]}
+                alt=""
+                className="w-24 h-24 mx-auto object-cover bg-[#33b05f89] rounded-full drop-shadow-2xl"
               />
+              <Link
+                to={`/shop/${item.id}`}
+                className="block mt-3 text-[0.9rem] font-medium text-ellipsis overflow-hidden whitespace-nowrap"
+              >
+                {item.name}
+              </Link>
+              <div className="flex flex-col gap-y-2">
+                {/* ITEM PRICE */}
+                <div className="flex items-center gap-x-3">
+                  <p className="text-[0.8rem]">
+                    ₦
+                    {item["discount-price"]
+                      ? priceComma(item["discount-price"])
+                      : priceComma(item.price)}
+                  </p>
+                  {item["discount-price"] ? (
+                    <p className="text-[0.75rem] text-red-500 line-through">
+                      ₦{priceComma(item.price)}
+                    </p>
+                  ) : null}
+                </div>
+
+                {/* ADD-TO-CART BUTTON */}
+                <ButtonWithIcon
+                  backgroundColor="bg-dark-green"
+                  borderRadius="rounded-lg"
+                  func={() => {}}
+                  icon={<BiCartAdd />}
+                  iconSize="text-lg"
+                  padding="px-2 py-1.5"
+                  textColor="text-secondary"
+                  miscStyle="w-fit absolute bottom-2 right-4"
+                />
+              </div>
             </div>
           </div>
         ))}

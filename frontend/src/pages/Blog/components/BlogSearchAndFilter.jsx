@@ -2,8 +2,7 @@ import { useContext, useState } from "react";
 import { DefaultInput } from "../../../components/form/Inputs";
 import { AppContext } from "../../../contexts/AppContext";
 import { ButtonWithIcon } from "../../../components/ui/buttons";
-import { BiCaretDown, BiCaretUp, BiSearch } from "react-icons/bi";
-import { IconContext } from "react-icons";
+import { BiSearch } from "react-icons/bi";
 import SearchFilter from "./sub-components/SearchFilter";
 
 const BlogSearchAndFilter = ({ setItemsDown }) => {
@@ -18,12 +17,12 @@ const BlogSearchAndFilter = ({ setItemsDown }) => {
   ];
 
   const sortBy = [
-    "Title [A-Z]",
-    "Title [Z-A]",
-    "Author [Z-A]",
-    "Author [A-Z]",
-    "Date created [A-Z]",
-    "Date created [Z-A]",
+    "Date created (newest)",
+    "Date created (oldest)",
+    "Title (A-Z)",
+    "Title (Z-A)",
+    "Author (Z-A)",
+    "Author (A-Z)",
   ];
 
   const [filterState, setFilterState] = useState(false);

@@ -10,7 +10,7 @@ const BlogIntro = ({screenWidth, bodyMargin}) => {
         isDark ? "bg-[#3e3e3e]" : "bg-primary-gray"
       } ${screenWidth > 767 ? bodyMargin : ""} transition-all duration-300`}
     >
-      <h1 className="text-3xl font-semibold text-primary mb-4">
+      <h1 className="text-3xl font-semibold text-primary bg-red-500 mb-4">
         Agricultural Insider: News and Opinion
       </h1>
       <p className={`${isDark ? "text-primary-gray" : "text-black"}`}>

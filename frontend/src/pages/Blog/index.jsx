@@ -6,7 +6,6 @@ import BlogIntro from "./components/BlogIntro";
 import BlogList from "./components/BlogList";
 import { Footer } from "../../components/ui";
 import BlogSearchAndFilter from "./components/BlogSearchAndFilter";
-import { useNavigate } from "react-router-dom";
 import InfoPage from "../InfoPage";
 import Loading from "../Loading";
 
@@ -19,7 +18,6 @@ const Blogs = ({
   setBackground,
 }) => {
   const { isDark, authStates } = useContext(AppContext);
-  const navigate = useNavigate();
 
   const [isPending, setIsPending] = useState(false);
   const [itemsDown, setItemsDown] = useState(false);
@@ -35,9 +33,10 @@ const Blogs = ({
         setTimeout(() => {
           setIsPending(false);
         }, 3000); */
+        console.log(authState)
       }
     };
-  }, []);
+  }, [authState]);
 
   useEffect(() => {
     setBackground(isDark ? "#121212" : "#f1f1f1");
